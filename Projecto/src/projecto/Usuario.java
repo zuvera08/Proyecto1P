@@ -12,8 +12,34 @@ package projecto;
 public class Usuario {
     private String usuario;
     private String nombre;
+    private String cedula;
     private String correo;
-    private String us_tipo;
+    private String contrasenia;
+
+    public Usuario(String usuario, String nombre, String cedula, String correo, String contrasenia) {
+        this.usuario = usuario;
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+    
 
     public String getUsuario() {
         return usuario;
@@ -39,14 +65,6 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getUs_tipo() {
-        return us_tipo;
-    }
+    
 
-    public void setUs_tipo(String us_tipo) {
-        this.us_tipo = us_tipo;
-    }
-
- 
- 
 }
