@@ -9,6 +9,13 @@ package projecto;
  *
  * @author PC
  */
-public class Agentes {
-    
+public class Agentes extends Usuario {
+    private String codigoAgente;
+
+    public Agentes(String codigoAgente, String usuario, String nombre, String cedula, String correo, String contrasenia) {
+        super(usuario, nombre, cedula, correo, contrasenia);
+        this.codigoAgente = codigoAgente;
+    }
+
+   
 }
