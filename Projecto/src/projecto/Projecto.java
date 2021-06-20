@@ -25,7 +25,7 @@ public class Projecto {
         ArrayList<Propiedades> propiedades = new ArrayList<>();
         ArrayList<Consultas> consultas = new ArrayList<>();
         ArrayList<Venta> ventas = new ArrayList<>();
-        Clientes cliente1 = new Clientes("A","A","A","A","A");
+        /*Clientes cliente1 = new Clientes("A","A","A","A","A");
         Agentes agente1 = new Agentes();
         Agentes agente2 = new Agentes()
         Administradores admin1 = new Administradores();
@@ -44,7 +44,7 @@ public class Projecto {
         propiedades.add(casa1);
         propiedades.add(casa2);
         propiedades.add(terreno1);
-        propiedades.add(terreno2);  
+        propiedades.add(terreno2);  */
     }
     
 }
