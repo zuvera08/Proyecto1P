@@ -64,6 +64,15 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    class Cliente extends Usuario{
+        
+    }
+    class Administrador extends Usuario{
+        
+    }
+    class Agente extends Usuario{
+        
+    }
 
     
 
