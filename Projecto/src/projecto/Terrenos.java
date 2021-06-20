@@ -11,6 +11,11 @@ package projecto;
  */
 public class Terrenos extends Propiedades {
     private String tipoTerreno;
+
+    public Terrenos(String tipoTerreno, double precio, double ancho, double profundidad, Ubicacion ubicacion, Agentes agente, String codigo) {
+        super(precio, ancho, profundidad, ubicacion, agente, codigo);
+        this.tipoTerreno = tipoTerreno;
+    }
     
     
 }

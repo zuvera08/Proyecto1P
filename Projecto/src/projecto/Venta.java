@@ -5,8 +5,6 @@
  */
 package projecto;
 
-import projecto.Usuario.Agente;
-import projecto.Usuario.Cliente;
 
 /**
  *
