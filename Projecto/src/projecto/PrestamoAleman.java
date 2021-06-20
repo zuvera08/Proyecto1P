@@ -9,7 +9,16 @@ package projecto;
  *
  * @author PC
  */
-public abstract class PrestamoAleman extends CalculadoraPrestamo{
+public class PrestamoAleman extends CalculadoraPrestamo{
+
+    public PrestamoAleman(Propiedades propiedad, double tasa, int cuota, double amortizacion) {
+        super(propiedad, tasa, cuota, amortizacion);
+    }
+
+    @Override
+    public double calcularPrestamo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
 }

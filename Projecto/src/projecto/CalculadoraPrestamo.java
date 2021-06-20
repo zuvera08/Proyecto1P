@@ -11,11 +11,19 @@ package projecto;
  * @author Danielitto
  */
 public abstract class CalculadoraPrestamo {
-private Propiedades propiedad;
-private double tasa;
-private int cuota;
-private double amortizacion;
+    private Propiedades propiedad;
+    private double tasa;
+    private int cuota;
+    private double amortizacion;
 
+    public CalculadoraPrestamo(Propiedades propiedad, double tasa, int cuota, double amortizacion) {
+        this.propiedad = propiedad;
+        this.tasa = tasa;
+        this.cuota = cuota;
+        this.amortizacion = amortizacion;
+    }
+
+    
     public Propiedades getPropiedad() {
         return propiedad;
     }
