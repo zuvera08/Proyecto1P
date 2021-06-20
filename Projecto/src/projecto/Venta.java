@@ -15,9 +15,9 @@ import projecto.Usuario.Cliente;
 public class Venta {
     private Propiedades propiedad;
     private String fecha;
-    private Agente agente;
-    private Cliente cliente;
-    public Venta(Propiedad p,String f, Agente a, Cliente c){
+    private Agentes agente;
+    private Clientes cliente;
+    public Venta(Propiedades p,String f, Agentes a, Clientes c){
         propiedad=p;
         fecha=f;
         agente=a;

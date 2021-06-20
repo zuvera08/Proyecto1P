@@ -10,5 +10,13 @@ package projecto;
  * @author PC
  */
 public class Casas extends Propiedades{
+    private int numPisos;
+    private int numHabitaciones;
+
+    public Casas(int numPisos, int numHabitaciones, double precio, double ancho, double profundidad, Ubicacion ubicacion, Agentes agente, String codigo) {
+        super(precio, ancho, profundidad, ubicacion, agente, codigo);
+        this.numPisos = numPisos;
+        this.numHabitaciones = numHabitaciones;
+    }
     
 }

@@ -15,10 +15,10 @@ private double precio;
 private double ancho;
 private double profundidad;
 private Ubicacion ubicacion;
-private Agente agente;
+private Agentes agente;
 private String codigo;
 
-    public Propiedades(double precio, double ancho, double profundidad, Ubicacion  ubicacion , Agente  agente , String codigo) {
+    public Propiedades(double precio, double ancho, double profundidad, Ubicacion  ubicacion , Agentes  agente , String codigo) {
         this.precio = precio;
         this.ancho = ancho;
         this.profundidad = profundidad;
@@ -59,11 +59,11 @@ private String codigo;
         this.ubicacion = ubicacion;
     }
 
-    public Agente getAgente() {
+    public Agentes getAgente() {
         return agente;
     }
 
-    public void setAgente(Agente agente) {
+    public void setAgente(Agentes agente) {
         this.agente = agente;
     }
 

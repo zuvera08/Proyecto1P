@@ -68,16 +68,7 @@ public class Usuario {
     public void iniciarSesion(String usuario ,String contrasenia ){}
     public void registrarse(String nombre,String fechaNacimiento ,String Usuario,String contrasenia ){
     }
-    class Cliente extends Usuario{
-        
-    }
-    class Administrador extends Usuario{
-        
-    }
-    class Agente extends Usuario{
-        
-    }
-
+    
     
 
 }

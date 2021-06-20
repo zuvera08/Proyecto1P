@@ -25,16 +25,16 @@ public class Projecto {
         ArrayList<Propiedades> propiedades = new ArrayList<>();
         ArrayList<Consultas> consultas = new ArrayList<>();
         ArrayList<Venta> ventas = new ArrayList<>();
-        Cliente cliente1 = new Cliente("A","A","A","A","A");
-        Agente agente1 = new Agente();
-        Agente agente2 = new Agente()
-        Administrador admin1 = new Administrador();
-        Administrador admin2 = new Administrador();
-        Administrador admin3 = new Administrador();
-        Casa casa1 = new Casa();
-        Casa casa2 = new Casa();
-        Terreno terreno1 = new Terreno();
-        Terreno terreno2 = new Terreno();
+        Clientes cliente1 = new Clientes("A","A","A","A","A");
+        Agentes agente1 = new Agentes();
+        Agentes agente2 = new Agentes()
+        Administradores admin1 = new Administradores();
+        Administradores admin2 = new Administradores();
+        Administradores admin3 = new Administradores();
+        Casas casa1 = new Casas();
+        Casas casa2 = new Casas();
+        Terrenos terreno1 = new Terrenos();
+        Terrenos terreno2 = new Terrenos();
         usuarios.add(cliente1);
         usuarios.add(agente1);
         usuarios.add(agente2);
