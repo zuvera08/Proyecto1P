@@ -5,10 +5,21 @@
  */
 package projecto;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author PC
  */
-public class Clientes {
+public class Clientes extends Usuario {
+    private String fechaNacimiento;
+    private ArrayList<String> preferencias;
+    private double prestamo;
+
+    public Clientes(String fechaNacimiento, ArrayList<String> preferencias, String usuario, String nombre, String cedula, String correo, String contrasenia) {
+        super(usuario, nombre, cedula, correo, contrasenia);
+        this.fechaNacimiento = fechaNacimiento;
+        this.preferencias = preferencias;
+    }
     
 }
