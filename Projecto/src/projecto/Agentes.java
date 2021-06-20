@@ -9,12 +9,6 @@ package projecto;
  *
  * @author PC
  */
-public class Administradores extends Usuario {
-
-    public Administradores(String usuario, String nombre, String cedula, String correo, String contrasenia) {
-        super(usuario, nombre, cedula, correo, contrasenia);
-    }
-
-    
+public class Agentes {
     
 }
