@@ -11,11 +11,13 @@ import projecto.Agentes;
  */
 public class Propiedades {
    private double precio;
+   private double tasa;
    private double ancho;
    private double profundidad;
    private Ubicacion ubicacion;
    private Agentes agente;
    private String codigo;
+   
    
    public Propiedades(double precio,double ancho,double profundidad,Ubicacion ubicacion,Agentes agente,String codigo){
        this.precio=precio;
@@ -28,6 +30,9 @@ public class Propiedades {
    
    public double getPrecio(){
        return precio;
+   }
+   public double getTasa(){
+       return tasa;
    }
    public double getAncho(){
        return ancho;
@@ -62,5 +67,8 @@ public class Propiedades {
     }
    public void setPrecio(double precio) {
         this.precio = precio;
+    }
+   public void setTasa(double tasa) {
+        this.tasa = tasa;
     }
 }
