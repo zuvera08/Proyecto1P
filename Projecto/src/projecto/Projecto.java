@@ -6,6 +6,7 @@
 package projecto;
 
 import java.util.ArrayList;
+import Propiedades.Propiedades;
 //import projecto.Usuario.Administrador;
 //import projecto.Usuario.Agente;
 //import projecto.Usuario.Cliente;

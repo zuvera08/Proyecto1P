@@ -1,16 +1,17 @@
-package projecto;
-import Propiedades.Propiedades;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Utilitaria;
+import Propiedades.Propiedades;
 
 /**
  *
- * @author Danielitto
+ * @author Ricardo Siavichay
  */
-public abstract class CalculadoraPrestamo {
+
+ public abstract class CalculadoraPrestamo {
     private Propiedades propiedad;
     private double tasa;
     private int cuota;

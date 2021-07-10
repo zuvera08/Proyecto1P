@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projecto;
+package Utilitaria;
 import Propiedades.Propiedades;
+
+import Propiedades.Propiedades;
+
 /**
  *
  * @author PC
  */
-public class PrestamoFrances extends CalculadoraPrestamo {
+public class PrestamoAleman extends CalculadoraPrestamo{
 
-    public PrestamoFrances(Propiedades propiedad, double tasa, int cuota, double amortizacion) {
+    public PrestamoAleman(Propiedades propiedad, double tasa, int cuota, double amortizacion) {
         super(propiedad, tasa, cuota, amortizacion);
     }
 
@@ -22,3 +25,4 @@ public class PrestamoFrances extends CalculadoraPrestamo {
 
     
 }
+
