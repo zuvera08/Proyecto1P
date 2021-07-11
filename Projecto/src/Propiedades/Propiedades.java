@@ -17,6 +17,7 @@ public class Propiedades {
    private Ubicacion ubicacion;
    private Agentes agente;
    private String codigo;
+   private boolean vendida;
    
    
    public Propiedades(double precio,double ancho,double profundidad,Ubicacion ubicacion,Agentes agente,String codigo){
@@ -49,6 +50,9 @@ public class Propiedades {
    public String getCodigo(){
        return codigo;
    }
+   public boolean getVendida(){
+       return vendida;
+   }
    
    public void setCodigo(String codigo) {
         this.codigo = codigo;
@@ -71,4 +75,7 @@ public class Propiedades {
    public void setTasa(double tasa) {
         this.tasa = tasa;
     }
+   public void setVendidad(boolean estado){
+       vendida=estado;
+   }
 }
