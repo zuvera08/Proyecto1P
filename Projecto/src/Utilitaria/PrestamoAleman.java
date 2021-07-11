@@ -32,7 +32,7 @@ public class PrestamoAleman extends CalculadoraPrestamo{
         double interes=getPropiedad().getTasa();
         int cuotas=getCuota();
         setValorInicial(precio*interes);
-        double valorPorCuota=precio*(interes/(1-Math.pow((1+interes),cuotas)));
+        double valorPorCuota=precio*(interes/(1-Math.pow((1-interes),cuotas)));
         return valorPorCuota;
     }
 }
