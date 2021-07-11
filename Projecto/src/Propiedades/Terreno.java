@@ -10,18 +10,18 @@ import projecto.Agentes;
  * @author Ricardo Siavichay
  */
 public class Terreno extends Propiedades {
-     private String tipoTerreno;
+     private TiposTerreno tipoTerreno;
        
-       public Terreno(double precio,double ancho,double profundidad,Ubicacion ubicacion,Agentes agente,String codigo,String tipoTerreno){
+       public Terreno(double precio,double ancho,double profundidad,Ubicacion ubicacion,Agentes agente,String codigo,TiposTerreno tipoTerreno){
            super(precio,ancho,profundidad,ubicacion,agente,codigo);
            this.tipoTerreno=tipoTerreno;
        }
        
-       public String getTipoTerreno(){
+       public TiposTerreno getTipoTerreno(){
            return tipoTerreno;
        }
        
-       public void setTipoTerreno(String tipoTerreno){
+       public void setTipoTerreno(TiposTerreno tipoTerreno){
            this.tipoTerreno=tipoTerreno;
        }
 }
