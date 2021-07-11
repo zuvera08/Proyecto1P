@@ -20,7 +20,9 @@ public class Clientes extends Usuario {
     private ArrayList<String> preferencias;
     private double prestamo;
     
-    public void salir() {
+    public void salir(BaseDatos bd) {
+        Usuario u = new Usuario();
+        u.iniciarMenu(bd);
     }
     public void opcionesCliente(BaseDatos bd) {
         Scanner sc = new Scanner(System.in);
@@ -59,10 +61,13 @@ public class Clientes extends Usuario {
                 case "4":
                    //SimularPrestamos(bd);
                    break;
+                default:
+                    System.out.println("Opcion Incorrecta");
+                break;
             }
 
-        } while (opcion != "5");
-        salir();
+        } while (!opcion.equals("5"));
+        salir(bd);
     }
     public Clientes(LocalDate fechaNacimiento, ArrayList<String> preferencias, String usuario, String nombre, String cedula, String correo, String contrasenia) {
         super(usuario, nombre, cedula, correo, contrasenia);

@@ -20,8 +20,9 @@ public class Agentes extends Usuario {
         this.codigoAgente = codigoAgente;
     }
     
-    public void salir(){
-        
+    public void salir(BaseDatos bd) {
+        Usuario u = new Usuario();
+        u.iniciarMenu(bd);
     }
     public void opcionesAgente(BaseDatos bd){
         String opcion= "";
@@ -43,8 +44,8 @@ public class Agentes extends Usuario {
   
           }  
     
-        }while(opcion != "3");
-        salir();
+        }while(!opcion.equals("3"));
+        salir(bd);
         
     }
     public String getCodigoAgente() {

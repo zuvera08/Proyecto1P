@@ -26,11 +26,12 @@ public class Administradores extends Usuario {
     public Administradores(String usuario, String nombre, String cedula, String correo, String contrasenia) {
         super(usuario, nombre, cedula, correo, contrasenia);
     }
-public void salir() {
-    
+public void salir(BaseDatos bd) {
+        Usuario u = new Usuario();
+        u.iniciarMenu(bd);
     }
 
-    public void opcionesAdministrador(BaseDatos bd) {
+     public void opcionesAdministrador(BaseDatos bd) {
         String opcion = "";
         do {
             System.out.println("Elija una opcion :");
@@ -38,8 +39,8 @@ public void salir() {
             System.out.println("REGISTRAR AGENTE (2):");
             System.out.println("VER REPORTE AGENTE Y VENTAS (3):");
             System.out.println("Salir(4)");
-            opcion = sc.next();
-            sc.nextLine();
+            opcion = sc.nextLine();
+
             switch (opcion) {
                 case "1":
                     registrarPropiedad(bd);
@@ -50,10 +51,14 @@ public void salir() {
                 case "3":
                     verReporteDeVentasYContactos(bd);
                     break;
+                default:
+                    System.out.println("Opcion Incorrecta");
+                break;
             }
 
-        } while (opcion != "4");
-        salir();
+        } while (!opcion.equals("4"));
+        salir(bd);
+        
 
     }
     public static Agentes randomAgente(ArrayList<Usuario> usuarios) {
