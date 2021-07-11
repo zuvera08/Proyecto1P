@@ -5,8 +5,7 @@
  */
 package Utilitaria;
 import Propiedades.Propiedades;
-
-import Propiedades.Propiedades;
+import java.lang.Math;
 
 /**
  *
@@ -14,15 +13,26 @@ import Propiedades.Propiedades;
  */
 public class PrestamoAleman extends CalculadoraPrestamo{
 
-    public PrestamoAleman(Propiedades propiedad, double tasa, int cuota, double amortizacion) {
-        super(propiedad, tasa, cuota, amortizacion);
-    }
+    private double valorInicial;
 
+    public PrestamoAleman(Propiedades propiedad, int cuota) {
+        super(propiedad, cuota, "Aleman");
+    }
+    
+    public double getValorInicial(){
+        return valorInicial;
+    }
+    
+    public void setValorInicial(double valor){
+        valorInicial=valor;
+    }
     @Override
     public double calcularPrestamo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double precio=getPropiedad().getPrecio();
+        double interes=getPropiedad().getTasa();
+        int cuotas=getCuota();
+        setValorInicial(precio*interes);
+        double valorPorCuota=precio*(interes/(1-Math.pow((1+interes),cuotas)));
+        return valorPorCuota;
     }
-
-    
 }
-

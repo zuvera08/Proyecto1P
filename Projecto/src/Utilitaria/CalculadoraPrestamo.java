@@ -13,13 +13,11 @@ import Propiedades.Propiedades;
 
  public abstract class CalculadoraPrestamo {
     private Propiedades propiedad;
-    private double tasa;
     private int cuota;
-    private double amortizacion;
+    private String amortizacion;
 
-    public CalculadoraPrestamo(Propiedades propiedad, double tasa, int cuota, double amortizacion) {
+    public CalculadoraPrestamo(Propiedades propiedad, int cuota, String amortizacion) {
         this.propiedad = propiedad;
-        this.tasa = tasa;
         this.cuota = cuota;
         this.amortizacion = amortizacion;
     }
@@ -33,14 +31,6 @@ import Propiedades.Propiedades;
         this.propiedad = propiedad;
     }
 
-    public double getTasa() {
-        return tasa;
-    }
-
-    public void setTasa(double tasa) {
-        this.tasa = tasa;
-    }
-
     public int getCuota() {
         return cuota;
     }
@@ -49,11 +39,11 @@ import Propiedades.Propiedades;
         this.cuota = cuota;
     }
 
-    public double getAmortizacion() {
+    public String getAmortizacion() {
         return amortizacion;
     }
 
-    public void setAmortizacion(double amortizacion) {
+    public void setAmortizacion(String amortizacion) {
         this.amortizacion = amortizacion;
     }
 
