@@ -13,11 +13,11 @@ import java.time.LocalDate;
  */
 public class Venta {
     private Propiedades propiedad;
-    private String fecha;
+    private LocalDate fecha;
     private Agentes agente;
     private Clientes cliente;
 
-    public Venta(Propiedades propiedad, String fecha, Agentes agente, Clientes cliente) {
+    public Venta(Propiedades propiedad, LocalDate fecha, Agentes agente, Clientes cliente) {
         this.propiedad = propiedad;
         this.fecha = fecha;
         this.agente = agente;
@@ -26,7 +26,7 @@ public class Venta {
     
     
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 

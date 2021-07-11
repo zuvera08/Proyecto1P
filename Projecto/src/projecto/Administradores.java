@@ -73,44 +73,41 @@ public void salir() {
     public void registrarPropiedad(BaseDatos bd) {
         System.out.println("Ingrese la propiedad a registrar (Terreno o propiedad)");
         String propiedad = sc.nextLine().toUpperCase();
-        sc.next();
         System.out.println("Ingrese el precio de la propiedad :");
         double precio = sc.nextInt();
         System.out.println("Ingrese el ancho de la propiedad :");
         double ancho = sc.nextInt();
         System.out.println("Ingrese la profundidad de la propiedad :");
         double profundidad = sc.nextInt();
+        sc.next();
         System.out.println("Ingrese el provincia de la propiedad :");
         String provincia = sc.nextLine();
-        sc.next();
         System.out.println("Ingrese la ciudad de la propiedad :");
         String ciudad = sc.nextLine();
-        sc.next();
         System.out.println("Ingrese la direccion de la propiedad :");
         String direccion = sc.nextLine();
-        sc.next();
         System.out.println("Ingrese el sector de la propiedad :");
         String sector = sc.nextLine();
-        sc.next();
         Ubicacion ubi = new Ubicacion(provincia, ciudad, direccion, sector);
         Agentes agente = randomAgente(bd.getUsuarios());
-        if (propiedad == "TERRENOS") {
+        if (propiedad.equals("TERRENOS")) {
             System.out.println("Ingrese el tipo del Terreno :");
             String tipoTerreno = sc.nextLine();
             String codigo = UUID.randomUUID().toString().toUpperCase().substring(0, 9);
             Terreno terreno = new Terreno( precio, ancho, profundidad, ubi, agente, codigo, TiposTerreno.valueOf(tipoTerreno));
             bd.getPropiedades().add(terreno);
+            System.out.println("REGISTRADO");
         }
-        if (propiedad == "CASAS") {
+        if (propiedad.equals("CASAS")) {
             System.out.println("Ingrese el numero de pisos de la propiedad :");
             int numPisos = sc.nextInt();
             System.out.println("Ingrese el numero de habitaciones de la propiedad :");
             int numHabitaciones = sc.nextInt();
             String codigo = UUID.randomUUID().toString().toUpperCase();
-            Casas casa = new Casas(numPisos,numHabitaciones, precio, ancho, profundidad, ubicacion, agente, codigo);
+            Casas casa = new Casas(numPisos,numHabitaciones, precio, ancho, profundidad, ubi, agente, codigo);
             bd.getPropiedades().add(casa);
+            System.out.println("REGISTRADO");
         }
-        sc.close();
     }
 
     public void registrarAgente(BaseDatos bd) {
@@ -127,6 +124,7 @@ public void salir() {
         String contraseñia = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
         Agentes agente = new Agentes(codigoAgente, usuario, nombre, cedula, correo, contraseñia);
         bd.getUsuarios().add(agente);
+        System.out.println("REGISTRADO");
     }
 
     public void verReporteDeVentasYContactos(BaseDatos bd) {
@@ -138,10 +136,10 @@ public void salir() {
         String ingresoFinal = sc.nextLine();
         LocalDate diaFinal = LocalDate.parse(ingresoFinal);
         System.out.println("Desea ver el reporte con un Agente especifico?");
-        String respuesta = sc.next().toUpperCase();
-        if (respuesta == "SI") {
+        String respuesta = sc.nextLine().toUpperCase();
+        if (respuesta.equals("SI")) {
             System.out.println("Ingrese el nombre del Agente");
-            String nombreAgente = sc.next();
+            String nombreAgente = sc.nextLine();
             ArrayList<Venta> listaventas = new ArrayList<>();
             ArrayList<Venta> listaventas2 = new ArrayList<>();
             for (Venta vent : bd.getVentas()) {
@@ -159,7 +157,7 @@ public void salir() {
                 System.out.println(l);
             }            
             }
-        } else if (respuesta == "NO") {
+        } else if (respuesta.equals("NO")) {
             ArrayList<Venta> listaventas3 = new ArrayList<>();
             for (Venta vent : bd.getVentas()) {
                 for (LocalDate date = diaInicial; date.isBefore(diaFinal); date = date.plusDays(1)) {
