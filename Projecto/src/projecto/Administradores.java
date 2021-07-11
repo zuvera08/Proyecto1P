@@ -75,7 +75,7 @@ public void salir(BaseDatos bd) {
     }
 
     public void registrarPropiedad(BaseDatos bd) {
-        System.out.println("Ingrese la propiedad a registrar (Terreno o propiedad)");
+        System.out.println("Ingrese la propiedad a registrar (TERRENO o CASAS)");
         String propiedad = sc.nextLine().toUpperCase();
         System.out.println("Ingrese el precio de la propiedad :");
         double precio = sc.nextInt();
