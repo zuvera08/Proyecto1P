@@ -67,6 +67,11 @@ public class Consultas {
     public String getRespuesta() {
         return respuesta;
     }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
+    
     @Override
     public String toString(){
         return fechaInicio+"    "+codigoPropiedad+"    "+agente.getNombre()+"    "+pregunta+"    "+estado;
