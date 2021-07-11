@@ -54,7 +54,6 @@ public void salir() {
 
         } while (opcion != "4");
         salir();
-        sc.close();
 
     }
     public static Agentes randomAgente(ArrayList<Usuario> usuarios) {

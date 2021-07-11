@@ -45,7 +45,6 @@ public class Agentes extends Usuario {
     
         }while(opcion != "3");
         salir();
-        sc.close();
         
     }
     public String getCodigoAgente() {
