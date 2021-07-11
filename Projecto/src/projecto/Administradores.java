@@ -133,10 +133,10 @@ public void salir(BaseDatos bd) {
 
     public void verReporteDeVentasYContactos(BaseDatos bd) {
         //LocalDate  DiaInicial, LocalDate DiaFinal
-        System.out.println("Ingrese el Dia Inicial");
+        System.out.println("Ingrese el Dia Inicial(AÑO-MES-DIA)(EN NUMEROS)");
         String ingresoDia = sc.nextLine();
         LocalDate diaInicial = LocalDate.parse(ingresoDia);
-        System.out.println("Ingrese el Dia Final");
+        System.out.println("Ingrese el Dia Final(AÑO-MES-DIA)(EN NUMEROS)");
         String ingresoFinal = sc.nextLine();
         LocalDate diaFinal = LocalDate.parse(ingresoFinal);
         System.out.println("Desea ver el reporte con un Agente especifico?");
@@ -147,13 +147,13 @@ public void salir(BaseDatos bd) {
             ArrayList<Venta> listaventas = new ArrayList<>();
             ArrayList<Venta> listaventas2 = new ArrayList<>();
             for (Venta vent : bd.getVentas()) {
-                if (vent.getAgente().equals(nombreAgente)) {
+                if (vent.getAgente().getNombre().equals(nombreAgente)) {
                     listaventas.add(vent);
                 }
             }
             for (Venta ventas : listaventas) {
-                for (LocalDate date = diaInicial; date.isBefore(diaFinal); date = date.plusDays(1)) {
-                    if (ventas.getFecha() == date) {
+                 if(diaInicial.isBefore(ventas.getFecha()) && diaFinal.isAfter(ventas.getFecha())) {
+                     
                         listaventas2.add(ventas);
                     }
                 }
@@ -161,14 +161,15 @@ public void salir(BaseDatos bd) {
                 System.out.println(l);
             }            
             }
-        } else if (respuesta.equals("NO")) {
+         else if (respuesta.equals("NO")) {
             ArrayList<Venta> listaventas3 = new ArrayList<>();
+            System.out.println("se esta ejecutando el no");
             for (Venta vent : bd.getVentas()) {
-                for (LocalDate date = diaInicial; date.isBefore(diaFinal); date = date.plusDays(1)) {
-                    if (vent.getFecha() == date) {
+                if(diaInicial.isBefore(vent.getFecha()) && diaFinal.isAfter(vent.getFecha())){
+                //for (LocalDate date = diaInicial; date.isBefore(diaFinal); date = date.plusDays(1)){
                         listaventas3.add(vent);
                     }
-                }
+                //}
             }
             for (Venta l : listaventas3){
                 System.out.println(l);
