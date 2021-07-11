@@ -5,15 +5,70 @@
  */
 package projecto;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Ricardo Siavichay
  */
 public class Consultas {
-    private String fechaInicio;
-    private String codigo;
-    private String nombreAgente;
+    private LocalDateTime fechaInicio;
+    private String codigoPropiedad;
+    private Agentes agente ;
+    private Clientes cliente;
     private String pregunta;
     private boolean estado;
     private String respuesta;
+
+    public Consultas(LocalDateTime fechaInicio, String codigoPropiedad, Agentes agente, Clientes cliente, String pregunta, boolean estado, String respuesta) {
+        this.fechaInicio = fechaInicio;
+        this.codigoPropiedad = codigoPropiedad;
+        this.agente = agente;
+        this.cliente = cliente;
+        this.pregunta = pregunta;
+        this.estado = estado;
+        this.respuesta = respuesta;
+    }
+
+    
+    public void registrarConsulta(Clientes cliente, String pregunta, String codigo){
+        fechaInicio= LocalDateTime.now();
+        this.cliente=cliente;
+        this.pregunta=pregunta;
+        estado=true;
+        codigoPropiedad=codigo;
+    
+    }
+
+    public LocalDateTime getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public String getCodigoPropiedad() {
+        return codigoPropiedad;
+    }
+
+    public Agentes getAgente() {
+        return agente;
+    }
+
+    public Clientes getCliente() {
+        return cliente;
+    }
+
+    public String getPregunta() {
+        return pregunta;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+    @Override
+    public String toString(){
+        return fechaInicio+"    "+codigoPropiedad+"    "+agente.getNombre()+"    "+pregunta+"    "+estado;
+    }
 }

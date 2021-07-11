@@ -14,24 +14,30 @@ public class Ubicacion {
     private String ciudad;
     private String direccion;
     private String sector;
-    
     public Ubicacion(String provincia,String ciudad,String direccion,String sector){
         this.provincia=provincia;
         this.ciudad=ciudad;
         this.direccion=direccion;
         this.sector=sector;
     }
-    
-    public String getProvincia(){
+
+    public String getProvincia() {
         return provincia;
     }
-    public String getCiudad(){
+
+    public String getCiudad() {
         return ciudad;
     }
-    public String getDireccion(){
+
+    public String getDireccion() {
         return direccion;
     }
-    public String getSector(){
+
+    public String getSector() {
         return sector;
-    }  
+    }
+    @Override
+    public String toString(){
+       return provincia+", "+ciudad+", "+direccion+", "+sector; 
+    }
 }

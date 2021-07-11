@@ -107,7 +107,7 @@ public void salir() {
             System.out.println("Ingrese el numero de habitaciones de la propiedad :");
             int numHabitaciones = sc.nextInt();
             String codigo = UUID.randomUUID().toString().toUpperCase();
-            Casas casa = new Casas(precio, ancho, profundidad, ubi, agente, codigo,numPisos, numHabitaciones);
+            Casas casa = new Casas(numPisos,numHabitaciones, precio, ancho, profundidad, ubicacion, agente, codigo);
             bd.getPropiedades().add(casa);
         }
         sc.close();

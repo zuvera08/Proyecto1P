@@ -13,46 +13,33 @@ import java.time.LocalDate;
  */
 public class Venta {
     private Propiedades propiedad;
-    private LocalDate fecha;
+    private String fecha;
     private Agentes agente;
     private Clientes cliente;
-    public Venta(Propiedades p,LocalDate f, Agentes a, Clientes c){
-        propiedad=p;
-        fecha=f;
-        agente=a;
-        cliente=c;
-    }
 
-    public Propiedades getPropiedad() {
-        return propiedad;
-    }
-
-    public void setPropiedad(Propiedades propiedad) {
+    public Venta(Propiedades propiedad, String fecha, Agentes agente, Clientes cliente) {
         this.propiedad = propiedad;
-    }
-
-    public LocalDate getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+        this.agente = agente;
+        this.cliente = cliente;
+    }
+    
+    
+
+    public String getFecha() {
+        return fecha;
     }
 
     public Agentes getAgente() {
         return agente;
     }
 
-    public void setAgente(Agentes agente) {
-        this.agente = agente;
-    }
-
     public Clientes getCliente() {
         return cliente;
     }
 
-    public void setCliente(Clientes cliente) {
-        this.cliente = cliente;
+    public Propiedades getPropiedad() {
+        return propiedad;
     }
     
 }
