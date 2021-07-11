@@ -22,6 +22,12 @@ public class BaseDatos {
     private ArrayList<Propiedades> propiedades;
     private ArrayList<Venta> ventas;
 
+    public BaseDatos() {
+        this.usuarios= new ArrayList<>();
+        this.consultas= new ArrayList<>();
+        this.propiedades= new ArrayList<>();
+        this.ventas= new ArrayList<>();
+    }
     
     public ArrayList<Venta> getVentas() {
         return ventas;

@@ -41,6 +41,11 @@ public class Venta {
     public Propiedades getPropiedad() {
         return propiedad;
     }
+
+    @Override
+    public String toString() {
+        return "Venta{" + "propiedad=" + propiedad + ", fecha=" + fecha + ", agente=" + agente + ", cliente=" + cliente + '}';
+    }
     
 }
     
