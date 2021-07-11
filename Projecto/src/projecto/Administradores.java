@@ -98,7 +98,7 @@ public void salir() {
             System.out.println("Ingrese el tipo del Terreno :");
             String tipoTerreno = sc.nextLine();
             String codigo = UUID.randomUUID().toString().toUpperCase().substring(0, 9);
-            Terreno terreno = new Terreno( precio, ancho, profundidad, ubi, agente, codigo, tipoTerreno);
+            Terreno terreno = new Terreno( precio, ancho, profundidad, ubi, agente, codigo, TiposTerreno.valueOf(tipoTerreno));
             bd.getPropiedades().add(terreno);
         }
         if (propiedad == "CASAS") {
