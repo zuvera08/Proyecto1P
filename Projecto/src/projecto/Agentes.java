@@ -76,7 +76,7 @@ public class Agentes extends Usuario {
                     if(c.getCodigoPropiedad().equals(cod)){
                         System.out.println("Ingrese su respuesta");
                         String Oracion= sc.nextLine();
-                        c.;
+                        c.setRespuesta(Oracion);
                         System.out.println("Contstado");
                     } 
                 }
