@@ -73,7 +73,10 @@ public void salir(BaseDatos bd) {
         Agentes randomAgente = agentes.get(rand.nextInt(agentes.size()));
         return randomAgente;
     }
-
+    /**
+     * Metodo que registrar las Propiedades en la Lista Propiedades dentro de la base de datos
+     * @param bd 
+     */
     public void registrarPropiedad(BaseDatos bd) {
         System.out.println("Ingrese la propiedad a registrar (TERRENO o CASAS)");
         String propiedad = sc.nextLine().toUpperCase();

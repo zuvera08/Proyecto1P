@@ -107,7 +107,7 @@ public class Usuario {
             String nombre= sc.nextLine();
             System.out.println("Ingrese la cedula");
             String cedula= sc.nextLine();
-            System.out.println("Ingrese la fecha de Nacimiento");
+            System.out.println("Ingrese la fecha de Nacimiento (año-mes-dia(EN NUMEROS))");
             String fechaNacimiento= sc.nextLine();
             LocalDate actual = LocalDate.now();
             int años = Period.between(LocalDate.parse(fechaNacimiento), actual).getYears();
