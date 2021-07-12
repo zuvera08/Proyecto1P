@@ -13,8 +13,8 @@ public class Casas extends Propiedades{
         private int numPisos;
     private int numHabitaciones;
 
-    public Casas(int numPisos, int numHabitaciones, double precio, double ancho, double profundidad, Ubicacion ubicacion, Agentes agente, String codigo) {
-        super(precio, ancho, profundidad, ubicacion, agente, codigo);
+    public Casas(int numPisos, int numHabitaciones, double precio, double ancho, double profundidad, Ubicacion ubicacion, Agentes agente, String codigo,double tasa) {
+        super(precio, ancho, profundidad, ubicacion, agente, codigo,tasa);
         this.numPisos = numPisos;
         this.numHabitaciones = numHabitaciones;
     }

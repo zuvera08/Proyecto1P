@@ -12,8 +12,8 @@ import projecto.Agentes;
 public class Terreno extends Propiedades {
     private TiposTerreno tipoTerreno;
        
-    public Terreno(double precio,double ancho,double profundidad,Ubicacion ubicacion,Agentes agente,String codigo,TiposTerreno tipoTerreno){
-        super(precio,ancho,profundidad,ubicacion,agente,codigo);
+    public Terreno(double precio,double ancho,double profundidad,Ubicacion ubicacion,Agentes agente,String codigo,double tasa,TiposTerreno tipoTerreno){
+        super(precio,ancho,profundidad,ubicacion,agente,codigo,tasa);
         this.tipoTerreno=tipoTerreno;
     }
        

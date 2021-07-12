@@ -7,6 +7,8 @@ package projecto;
 
 import Propiedades.Casas;
 import Propiedades.Propiedades;
+import Utilitaria.PrestamoAleman;
+import Utilitaria.PrestamoFrances;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -159,5 +161,13 @@ public class Clientes extends Usuario {
                 }
         return propiedadesDisponibles;
         }
-    
+    public void simularPrestamo(Propiedades propiedad, int cuota, String amortizacion){
+        if(amortizacion.toLowerCase().equals("frances")){
+           PrestamoFrances calculof = new PrestamoFrances(propiedad,cuota);
+           System.out.println("Cuoras: "+cuota+" --- "+"Valor de la cuota: "+calculof.calcularPrestamo() );
+        }else if(amortizacion.toLowerCase().equals("aleman")){
+           PrestamoAleman calculoa = new PrestamoAleman(propiedad,cuota);
+           System.out.println("Cuoras: "+cuota+" --- "+"Valor de la cuota: "+calculoa.calcularPrestamo()+" --- "+"Valor incial a pagar: "+calculoa.getValorInicial() );
+        }
+    }
 }

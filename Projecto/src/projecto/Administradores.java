@@ -79,6 +79,8 @@ public void salir(BaseDatos bd) {
         String propiedad = sc.nextLine().toUpperCase();
         System.out.println("Ingrese el precio de la propiedad :");
         double precio = sc.nextInt();
+        System.out.println("Ingrese la tasa de interes de la propiedad :");
+        double tasa = sc.nextDouble();
         System.out.println("Ingrese el ancho de la propiedad :");
         double ancho = sc.nextInt();
         System.out.println("Ingrese la profundidad de la propiedad :");
@@ -98,7 +100,7 @@ public void salir(BaseDatos bd) {
             System.out.println("Ingrese el tipo del Terreno :");
             String tipoTerreno = sc.nextLine();
             String codigo = UUID.randomUUID().toString().toUpperCase().substring(0, 9);
-            Terreno terreno = new Terreno( precio, ancho, profundidad, ubi, agente, codigo, TiposTerreno.valueOf(tipoTerreno));
+            Terreno terreno = new Terreno( precio, ancho, profundidad, ubi, agente, codigo,tasa, TiposTerreno.valueOf(tipoTerreno));
             bd.getPropiedades().add(terreno);
             System.out.println("REGISTRADO");
         }
@@ -108,7 +110,7 @@ public void salir(BaseDatos bd) {
             System.out.println("Ingrese el numero de habitaciones de la propiedad :");
             int numHabitaciones = sc.nextInt();
             String codigo = UUID.randomUUID().toString().toUpperCase();
-            Casas casa = new Casas(numPisos,numHabitaciones, precio, ancho, profundidad, ubi, agente, codigo);
+            Casas casa = new Casas(numPisos,numHabitaciones, precio, ancho, profundidad, ubi, agente, codigo,tasa);
             bd.getPropiedades().add(casa);
             System.out.println("REGISTRADO");
         }

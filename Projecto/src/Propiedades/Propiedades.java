@@ -20,8 +20,9 @@ public class Propiedades {
     private String descripcion;
     private boolean vendida;
 
-    public Propiedades(double precio, double ancho, double profundidad, Ubicacion  ubicacion , Agentes  agente , String codigo) {
+    public Propiedades(double precio, double ancho, double profundidad, Ubicacion  ubicacion , Agentes  agente , String codigo,double tasa) {
         this.precio = precio;
+        this.tasa = tasa;
         this.ancho = ancho;
         this.profundidad = profundidad;
         this.ubicacion= ubicacion;
