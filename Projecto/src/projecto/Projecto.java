@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import Propiedades.Propiedades;
 import Propiedades.Ubicacion;
 import java.time.LocalDate;
+import Propiedades.Casas;
+import Propiedades.Terreno;
+import Propiedades.TiposTerreno;
 //import projecto.Usuario.Administrador;
 //import projecto.Usuario.Agente;
 //import projecto.Usuario.Cliente;
@@ -41,7 +44,7 @@ public class Projecto {
         
         Ubicacion ubicacionpropiedades1= new Ubicacion("GUAYAS","GUAYAQUIL","SAUCES 4","IZQUIERDA");
         
-        Propiedades propiedadesventas1= new Propiedades(4,3,2,ubicacionpropiedades1,(Agentes)usuario2,"ABC",0.03);
+        Propiedades propiedadesventas1= new Casas(4,4,4,3.0,2.0,ubicacionpropiedades1,(Agentes)usuario2,"ABC",5.5);
         datos.getPropiedades().add(propiedadesventas1);
         
         Venta venta1= new Venta(propiedadesventas1,LocalDate.parse("2019-12-12"),(Agentes)usuario2,(Clientes)usuario3);
@@ -51,19 +54,19 @@ public class Projecto {
         datos.getUsuarios().add(usuario5);
         
         Ubicacion ubicacionpropiedades2= new Ubicacion("GUAYAS","GUAYASQUIL","SAUCES 4","IZQUIERDA");
-        Propiedades propiedadesventas2= new Propiedades(3,3,3,ubicacionpropiedades2,(Agentes)usuario2,"CBA",0.03);
+        Propiedades propiedadesventas2= new Casas(4,4,3.4,3.6,3.7,ubicacionpropiedades2,(Agentes)usuario2,"CBA",5.5);
         datos.getPropiedades().add(propiedadesventas2) ;
         
         Venta venta2= new Venta(propiedadesventas2,LocalDate.parse("2020-12-12"),(Agentes)usuario3,(Clientes)usuario4);
         datos.getVentas().add(venta2);
         
         Ubicacion ubicacionpropiedades3= new Ubicacion("GUAYAS","DAULE","DAULE","DERECHA");
-        Propiedades propiedadesventas3= new Propiedades(5,7,8,ubicacionpropiedades3,(Agentes)usuario2,"ABC",0.03);
+        Propiedades propiedadesventas3= new Terreno(5,7,8,ubicacionpropiedades3,(Agentes)usuario2,"CDB",5.5,TiposTerreno.COMERSIAL);
         datos.getPropiedades().add(propiedadesventas3);
         
         Ubicacion ubicacionpropiedades4= new Ubicacion("GUAYAS","DAULE","DAULE","DERECHA");
         
-       Propiedades propiedadesventas4= new Propiedades(5,6,7,ubicacionpropiedades4,(Agentes)usuario3,"ABC",0.03);
+       Propiedades propiedadesventas4= new Terreno(5.5,6.6,7.7,ubicacionpropiedades4,(Agentes)usuario3,"ABC",7.7,TiposTerreno.VIVIENDA);
         datos.getPropiedades().add(propiedadesventas4);
         
         usuario.iniciarMenu(datos);
@@ -90,5 +93,6 @@ public class Projecto {
         propiedades.add(terreno1);
         propiedades.add(terreno2);  */
     }
+    
     
 }

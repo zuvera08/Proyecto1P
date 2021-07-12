@@ -78,13 +78,13 @@ public void salir(BaseDatos bd) {
         System.out.println("Ingrese la propiedad a registrar (TERRENO o CASAS)");
         String propiedad = sc.nextLine().toUpperCase();
         System.out.println("Ingrese el precio de la propiedad :");
-        double precio = sc.nextInt();
+        double precio = sc.nextDouble();
         System.out.println("Ingrese la tasa de interes de la propiedad :");
         double tasa = sc.nextDouble();
         System.out.println("Ingrese el ancho de la propiedad :");
-        double ancho = sc.nextInt();
+        double ancho = sc.nextDouble();
         System.out.println("Ingrese la profundidad de la propiedad :");
-        double profundidad = sc.nextInt();
+        double profundidad = sc.nextDouble();
         sc.next();
         System.out.println("Ingrese el provincia de la propiedad :");
         String provincia = sc.nextLine();
