@@ -6,7 +6,7 @@
 package Propiedades;
 import projecto.Agentes;
 /**
- *
+ *Esta clase respresenta a la clase padre de las distinas propiedades que se encuentran a la venta, las cuales son terrenos y casas
  * @author Ricardo Siavichay
  */
 public class Propiedades {
@@ -19,7 +19,16 @@ public class Propiedades {
     private String codigo;
     private String descripcion;
     private boolean vendida;
-
+ /**
+    *Constructor para un objeto de tipo propiedad y se establece su estado en no vendida
+    * @param precio aqui se establece el precio que tendra la propiedad
+    * @param ancho el ancho de la propiedad
+    * @param profundidad la profundidad de la propiedad
+    * @param ubicacion la ubicacion en que se encuentra
+    * @param agente el agente encargado de la propiedad
+    * @param codigo el codigo asociado a la propiedad
+    * @param tasa se ingresa la tasa de interes para los pagos de la casa
+    **/
     public Propiedades(double precio, double ancho, double profundidad, Ubicacion  ubicacion , Agentes  agente , String codigo,double tasa) {
         this.precio = precio;
         this.tasa = tasa;
@@ -28,6 +37,7 @@ public class Propiedades {
         this.ubicacion= ubicacion;
         this.agente= agente;        
         this.codigo = codigo;
+        vendida=false;
     }
 
     public double getPrecio() {
