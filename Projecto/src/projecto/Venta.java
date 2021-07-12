@@ -7,16 +7,22 @@ package projecto;
 import Propiedades.Propiedades;
 import java.time.LocalDate;
 
-/**
- *
- * @author Ricardo Siavichay
- */
+/* La clase define las ventas y sus atributos 
+     * 
+     * @author JosueVera
+     */
 public class Venta {
     private Propiedades propiedad;
     private LocalDate fecha;
     private Agentes agente;
     private Clientes cliente;
-
+/** El constructor incialiaza y define cada uno de los atributos
+     * @param Propiedad
+     * @param  fecha
+     * @param agente
+     * @param  cliente
+     * @author JosueVera
+     */
     public Venta(Propiedades propiedad, LocalDate fecha, Agentes agente, Clientes cliente) {
         this.propiedad = propiedad;
         this.fecha = fecha;
