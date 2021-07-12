@@ -9,20 +9,31 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Propiedades.Propiedades;
-/**
- *
- * @author PC
- */
+
+/* La clase define los Agentes que se extiendes de Usuarios, Los mismos poseen atributos de usuario,nombre,cedula,etc. y sus metodos
+     * 
+     * @author JosueVera
+     */
 public class Agentes extends Usuario {
 
     private String codigoAgente;
     Scanner sc = new Scanner(System.in);
 /////
 
+    /** El metodo nos retorna al menu Inicial
+     * @param bd
+     * @author JosueVera
+     */
     public void salir(BaseDatos bd) {
         Usuario u = new Usuario();
        u.iniciarMenu(bd);
     } 
+     /**
+     * Metodo que muetstra las opciones del agente
+     * @param  bd
+     * 
+     * @author JosueVera
+     */
 
     public void opcionesAgente(BaseDatos bd) {
         String opcion = "";
@@ -48,7 +59,7 @@ public class Agentes extends Usuario {
         salir(bd);
 
     }
-
+    
     public String getCodigoAgente() {
         return codigoAgente;
     }
@@ -57,11 +68,27 @@ public class Agentes extends Usuario {
     public void setCodigoAgente(String codigoAgente) {
         this.codigoAgente = codigoAgente;
     }
-
+    
+    /**
+     * Constructor de la clase Agentes
+     * @param  codigoAgente
+     * @param  usuario
+     * @param  nombre
+     * @param  cedula
+     * @param  correo
+     * @param  contrasenia
+     * @author JosueVera
+     */
     public Agentes(String codigoAgente, String usuario, String nombre, String cedula, String correo, String contrasenia) {
         super(usuario, nombre, cedula, correo, contrasenia);
         this.codigoAgente = codigoAgente;
     }
+    
+    /**
+     * El metodo muestra las cosnultas que han hechos los clienstes con el Agente y permite constestarlas
+     * @param  bd
+     * @author JosueVera
+     */
 
     public void revizarBuzon(BaseDatos bd) {
         ArrayList<Consultas> listaconsultas = new ArrayList<>();
@@ -95,6 +122,11 @@ public class Agentes extends Usuario {
         }
 
     }
+    /**
+     * El metodo registrar una nueva venta en La lista Ventas de la base de datos
+     * @param  bd
+     * @author JosueVera
+     */
 
     public void registrarVenta(BaseDatos bd) {
         // se detalla las propiedades de la 
