@@ -21,15 +21,40 @@ import projecto.Agentes;
  *
  * @author PC
  */
+/**
+     * La clase define los administrados que se extiendes de Usuarios, Los mismos poseen atributos de usuario,nombre,cedula,etc.
+     * 
+     * @author JosueVera
+     */
 public class Administradores extends Usuario {
     Scanner sc = new Scanner(System.in);
+    /**
+     * Constructor para los administradores
+     * @param  usuario 
+     * @param  nombre 
+     * @param  cedula 
+     * @param  correo 
+     * @param  contrasenia 
+     * 
+     * @author JosueVera
+     */
     public Administradores(String usuario, String nombre, String cedula, String correo, String contrasenia) {
         super(usuario, nombre, cedula, correo, contrasenia);
     }
-public void salir(BaseDatos bd) {
+    /**
+     * Metodo nos retorna al menu principal
+     * @param bd El parametro bd es la base de datos
+     * @author JosueVera
+     */
+    public void salir(BaseDatos bd) {
         Usuario u = new Usuario();
        u.iniciarMenu(bd);
     } 
+/**
+     * Metodo reciebe la base de datos para retornal y mostrar las opciones correspondientes al aDMINISTRADOR
+     * @param bd El parametro bd es la base de datos
+     * @author JosueVera
+     */
 
      public void opcionesAdministrador(BaseDatos bd) {
         String opcion = "";
@@ -61,6 +86,11 @@ public void salir(BaseDatos bd) {
         
 
     }
+     /**
+     * Metodo que ayuda a conseguir un agente de forma aletoria existente en la lista de Usuarios de tipo Agente de la Base de Datos
+     * @param  usuarios Lista de usuarios dentro de la base de datos
+     * @author JosueVera
+     */
     public static Agentes randomAgente(ArrayList<Usuario> usuarios) {
         ArrayList<Agentes> agentes = new ArrayList<>();
         for (Usuario u : usuarios) {
@@ -75,7 +105,8 @@ public void salir(BaseDatos bd) {
     }
     /**
      * Metodo que registrar las Propiedades en la Lista Propiedades dentro de la base de datos
-     * @param bd 
+     * @param bd El parametro bd es la base de datos
+     * @author JosueVera
      */
     public void registrarPropiedad(BaseDatos bd) {
         System.out.println("Ingrese la propiedad a registrar (TERRENO o CASAS)");
@@ -118,7 +149,12 @@ public void salir(BaseDatos bd) {
             System.out.println("REGISTRADO");
         }
     }
-
+    
+    /**
+     * Metodo que registrar un nuevo Agente y pasa a la Lista de Usuarios de Tipo Agente, el mismo genera un codigo aleatorio para el mismo
+     * @param bd El parametro bd es la base de datos
+     * @author JosueVera
+     */
     public void registrarAgente(BaseDatos bd) {
         //String codigoAgente, String usuario, String nombre, String cedula, String correo, String contrasenia
         String codigoAgente = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
@@ -135,6 +171,12 @@ public void salir(BaseDatos bd) {
         bd.getUsuarios().add(agente);
         System.out.println("REGISTRADO");
     }
+    
+    /**
+     * Metodo muestra Reporte de ventas y info de Clientes, este puede ser mostrado por parametro de un Agente en especifica que se haya involucrado y por Rango de fechas
+     * @param bd El parametro bd es la base de datos
+     * @author JosueVera
+     */
 
     public void verReporteDeVentasYContactos(BaseDatos bd) {
         //LocalDate  DiaInicial, LocalDate DiaFinal
