@@ -6,12 +6,14 @@
 package projecto;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Scanner;
+import projecto.Administradores;
+import java.time.Period;
+import java.util.ArrayList;
 import java.util.UUID;
-
+import projecto.BaseDatos;
 /**
  *
  * @author Danielitto
@@ -22,11 +24,14 @@ public class Usuario {
     private String cedula;
     private String correo;
     private String contrasenia;
+    
+    
     public Administradores administrador;
     public Agentes agente;
     public Usuario() {
     }
-
+    
+    
     public Usuario(String usuario, String nombre, String cedula, String correo, String contrasenia) {
         this.usuario = usuario;
         this.nombre = nombre;
@@ -34,11 +39,12 @@ public class Usuario {
         this.correo = correo;
         this.contrasenia = contrasenia;
     }
+
     public Usuario(String usuario, String contrasenia) {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
-
+    
     public String getCedula() {
         return cedula;
     }
@@ -79,13 +85,15 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    //
     public  void iniciarMenu(BaseDatos bd){
     Scanner sc= new Scanner(System.in);
     System.out.println("IniciarSesion (1)");
     System.out.println("Registrar(2)");
     System.out.println("Ingrese la opcion que desee realizar(1 o 2)");
     String opcion= sc.nextLine();
-    switch(opcion){
+    do {
+        switch(opcion){
         case("1"):
             System.out.println("Ingrese el usuario");
             String usuario= sc.nextLine();
@@ -117,7 +125,13 @@ public class Usuario {
                  System.out.println("Usted es menor de edad, no puede registrarse");
                  break;
             }
-            }
+            
+        default:
+        System.out.println("Opcion Incorrecta");
+            break; 
+        }
+    }while(!opcion.equals(""));
+    
             
         
     }
@@ -128,45 +142,37 @@ public class Usuario {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true; 
-        }
-        if (obj == null) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (Objects.equals(this.usuario, other.usuario)) {
+        if (obj != null) {
+            Usuario otro = (Usuario) obj; 
+            if(otro.getUsuario().equals(this.usuario) && otro.getContrasenia().equals(this.contrasenia)){
             return true;
-        }
-        if (Objects.equals(this.contrasenia, other.contrasenia)) {
-            return true;
+            }
+            
+        
         }
         return false;
     }
-    
     public void iniciarSesion( String usuario, String contrasenia, BaseDatos bd){
        Usuario u= new Usuario(usuario,contrasenia);
         
        for(Usuario usu : bd.getUsuarios()){
-           System.out.println("Ingresando...");
-           if(usu!= null){
+          
            if(usu.equals(u)){
-               System.out.println("Ta bueno");
-               
                 if(usu instanceof Administradores){
-                   
+                    System.out.println("Bienvenido Admin");
                     administrador= (Administradores)usu;
                     administrador.opcionesAdministrador(bd);
                 }
-                if(usu instanceof Clientes){
+                else if(usu instanceof Clientes){
                 }
-                if(usu instanceof Agentes){
+                else if(usu instanceof Agentes){
+                    System.out.println("Bienvenido Agente");
                     agente= (Agentes)usu;
                     agente.opcionesAgente(bd);
                 }
            }
            }   
-       }
+       
        
     }
 
