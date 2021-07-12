@@ -46,7 +46,7 @@ public class Projecto {
         Propiedades propiedadesventas1= new Casas(4,4,4,3,2,ubicacionpropiedades1,(Agentes)usuario2,"ABC",5.5);
         datos.getPropiedades().add(propiedadesventas1);
         
-        Venta venta1= new Venta(propiedadesventas1,LocalDate.parse("2019-12-12"),(Agentes)usuario2,(Clientes)usuario3);
+        Venta venta1= new Venta(propiedadesventas1,LocalDate.parse("2019-12-12"),(Agentes)usuario2,(Clientes)usuario4);
         datos.getVentas().add(venta1);
         
         Alerta B= new Alerta("Casas",2,10,"GUAYAQUIL","DERECHA");
@@ -57,7 +57,7 @@ public class Projecto {
         Propiedades propiedadesventas2= new Casas(4,4,3,3,3,ubicacionpropiedades2,(Agentes)usuario2,"CBA",5.5);
         datos.getPropiedades().add(propiedadesventas2) ;
         
-        Venta venta2= new Venta(propiedadesventas2,LocalDate.parse("2020-12-12"),(Agentes)usuario3,(Clientes)usuario4);
+        Venta venta2= new Venta(propiedadesventas2,LocalDate.parse("2020-12-12"),(Agentes)usuario3,(Clientes)usuario5);
         datos.getVentas().add(venta2);
         
         Ubicacion ubicacionpropiedades3= new Ubicacion("GUAYAS","DAULE","DAULE","DERECHA");
