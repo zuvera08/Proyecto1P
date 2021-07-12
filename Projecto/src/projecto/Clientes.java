@@ -25,18 +25,25 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 /**
- *
- * @author PC
- */
+ * SuperClase que sirve para la tener la informacion en comun que poseen los clientes, agentes y administradores de la aplicacion
+ * @author Zuleyka Vera
+ **/
 public class Clientes extends Usuario {
     private LocalDate fechaNacimiento;
     private Alerta preferencias;
     private double prestamo;
     
+    /**
+    *Metodo que le da la opcion de salir al usuario de donde se encuentre
+    * @param bd la base de datos donde se encuentre
+    **/
     public void salir(BaseDatos bd) {
         Usuario u = new Usuario();
         u.iniciarMenu(bd);
     }
+    /**
+     *Metodo que sirve para mostrar las distintas opciones que poseen los clientes de la app
+     **/
     public void opcionesCliente(BaseDatos bd) {
         Scanner sc = new Scanner(System.in);
         String opcion = "";
@@ -99,6 +106,16 @@ public class Clientes extends Usuario {
         this.fechaNacimiento = fechaNacimiento;
         this.preferencias = preferencias;
     }
+    
+    /**
+     *Metodo para mostrar cuales son las propiedades que se encuentran disponilbes en base a los parametros indicados
+     * @param precioMin el precio minimo de busqueda
+     * @param precioMax el precio maximo de busqueda
+     * @param tipoPropiedad el tipo de propiedad que se esta buscando
+     * @param ciudad la ciudad deseada
+     * @param sector el sector deseado
+     * @param bd la base de datos a usarse
+     **/
     public ArrayList<Propiedades> consultarPropiedadesDisponibles(double precioMin, double precioMax, String tipoPropiedad, String ciudad, String sector,BaseDatos bd ){
         ArrayList<Propiedades> propiedadesDisponibles=new  ArrayList<>();
         for (Venta e: bd.getVentas()){
@@ -186,6 +203,9 @@ public class Clientes extends Usuario {
         }
     
     
+    /**
+     *Este metodo permite al cliente consultar su buzon de consultas
+     **/
     public void ConsultarBuzon(BaseDatos bd){
         
         System.out.println("   Fecha Inicio   Código propiedad         Nombre Agente                      Pregunta                       Estado");
@@ -195,6 +215,9 @@ public class Clientes extends Usuario {
             }
         }   
     }
+    /**
+     *Este metodo permite al cliente crear un objeto en alertas que le permita estar al tanto de cuando se abra una propiedad de sus preferencias
+     **/
     public void CrearAlerta(){
         System.out.println("Ingrese sus preferencias: ");
         Scanner sc= new Scanner(System.in);
@@ -210,7 +233,11 @@ public class Clientes extends Usuario {
         String sector=sc.nextLine().toLowerCase();
         preferencias= new Alerta(tipoPropiedad, precioMin, precioMax, ciudad, sector);
     }
-    
+    /**
+     *Este metodo permite enviar un correo al agnete de la propiedad que se encuentra interesado el cleinte
+     * @param p la propiedad de interes
+     * @return boolean verdadero si se envio con exito, falso si ocurrio un error
+     **/
     public boolean enviarCorreo(Propiedades p){
         String asunto;
         String mensaje;

@@ -6,8 +6,8 @@
 package projecto;
 
 /**
- *
- * @author PC
+ *Esta clase permita avisar al cliente cuando se ha creado una nueva propiedad que este de acorde a sus criterios de busqueda
+ * @author Zuleyka Vera
  */
 public class Alerta {
     private String tipoPropiedad;
@@ -15,7 +15,14 @@ public class Alerta {
     private double precioMax;
     private String ciudad;
     private String sector;
-
+    /**
+     *Constructor para las alertas que recibira el cliente
+     * @param tipoPropiedad el tipo de propiedad que recibira el cliente casa o terreno
+     * @param precioMin el valor minimo que se busca
+     * @param precioMax el valor maximo deseado
+     * @param ciudad la ciudad en que se busca la propiedad
+     * @param sector el sector de busqueda
+     **/
     public Alerta(String tipoPropiedad, double precioMin, double precioMax, String ciudad, String sector) {
         this.tipoPropiedad = tipoPropiedad;
         this.precioMin = precioMin;
