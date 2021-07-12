@@ -65,16 +65,28 @@ public class Clientes extends Usuario {
                     consultarPropiedadesDisponibles(precioMin,precioMax, tipoPropiedad, ciudad, sector,bd) ;
                     break;
                 case "2":
-                    //consultas(bd);
+                    ConsultarBuzon(bd);
                     break;
                 case "3":
-                    //crearalertas(bd);
+                    CrearAlerta();
                     break;
                     
                 case "4":
-                   //SimularPrestamos(bd);
-                   break;
-                default:
+                    System.out.println("Ingrese el codigo de la propiedad deseada ");
+                    String codigo= sc.nextLine();
+                    bd.getPropiedades();
+                    for(Propiedades p : bd.getPropiedades()){
+                        if (p.getCodigo().equals(codigo)){
+                            System.out.println("Ingrese la cuota deseada");
+                            int cuota= sc.nextInt();
+                            System.out.println("Ingrese la amortizacion deseada");
+                            String amortizacion= sc.nextLine();
+                            simularPrestamo(p,cuota,amortizacion);
+                            break;
+                        }
+                    }
+                   
+                    default:
                     System.out.println("Opcion Incorrecta");
                 break;
             }
