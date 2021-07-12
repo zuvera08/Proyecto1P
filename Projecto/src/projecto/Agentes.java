@@ -19,9 +19,10 @@ public class Agentes extends Usuario {
     Scanner sc = new Scanner(System.in);
 /////
 
-    public void salir() {
-
-    }
+    public void salir(BaseDatos bd) {
+        Usuario u = new Usuario();
+       u.iniciarMenu(bd);
+    } 
 
     public void opcionesAgente(BaseDatos bd) {
         String opcion = "";
@@ -44,7 +45,7 @@ public class Agentes extends Usuario {
             }
 
         } while (!opcion.equals("3"));
-        salir();
+        salir(bd);
 
     }
 

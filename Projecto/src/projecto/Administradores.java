@@ -28,8 +28,8 @@ public class Administradores extends Usuario {
     }
 public void salir(BaseDatos bd) {
         Usuario u = new Usuario();
-        u.iniciarMenu(bd);
-    }
+       u.iniciarMenu(bd);
+    } 
 
      public void opcionesAdministrador(BaseDatos bd) {
         String opcion = "";
