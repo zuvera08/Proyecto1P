@@ -7,21 +7,24 @@ package projecto;
 import java.util.ArrayList;
 import  Propiedades.Propiedades;
 /**
- *
- * @author Danielitto
- */
+     * La clase guarda todas las lista e info usadas en el programa
+    
+     * @author JosueVera
+     */
 public class BaseDatos {
 
 
-/**
- *
- * @author Danielitto
- */
+
     private ArrayList<Usuario> usuarios;
     private ArrayList<Consultas> consultas;
     private ArrayList<Propiedades> propiedades;
     private ArrayList<Venta> ventas;
-
+    
+    /**
+     * El constructor de la base de datos apra inicialiazr las listas
+     * @param  bd
+     * @author JosueVera
+     */
     public BaseDatos() {
         this.usuarios= new ArrayList<>();
         this.consultas= new ArrayList<>();
