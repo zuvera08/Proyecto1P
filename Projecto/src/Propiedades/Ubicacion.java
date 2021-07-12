@@ -6,7 +6,7 @@
 package Propiedades;
 
 /**
- *
+ *Esta clase almacena la informacion de la ubicacion de las propiedades
  * @author Ricardo Siavichay
  */
 public class Ubicacion {
@@ -14,6 +14,13 @@ public class Ubicacion {
     private String ciudad;
     private String direccion;
     private String sector;
+    /**
+     *Este contructor es para la ubicacion
+     * @param provincia la provincia de la propiedad
+     * @param ciudad la ciudad en que se encuentra
+     * @param direccion la direccion domiciliaria
+     * @param sector el sector de ubicacion
+     **/
     public Ubicacion(String provincia,String ciudad,String direccion,String sector){
         this.provincia=provincia;
         this.ciudad=ciudad;

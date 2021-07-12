@@ -6,7 +6,7 @@
 package Propiedades;
 
 /**
- *
+ *Esta clase contiene los tipos de terrenos disponibles para la clase terreno
  * @author Ricardo Siavichay
  */
 public enum TiposTerreno {
