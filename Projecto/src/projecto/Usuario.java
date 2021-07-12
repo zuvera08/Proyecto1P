@@ -27,6 +27,7 @@ public class Usuario {
     
     
     public Administradores administrador;
+    public Clientes cliente;
     public Agentes agente;
     public Usuario() {
     }
@@ -164,6 +165,9 @@ public class Usuario {
                     administrador.opcionesAdministrador(bd);
                 }
                 else if(usu instanceof Clientes){
+                    System.out.println("Bienvenido Cliente");
+                    cliente= (Clientes)usu;
+                    cliente.opcionesCliente(bd);
                 }
                 else if(usu instanceof Agentes){
                     System.out.println("Bienvenido Agente");
