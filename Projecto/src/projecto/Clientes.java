@@ -273,6 +273,13 @@ public class Clientes extends Usuario {
         }
         
     }
+    /**
+     *Este metodo sirve para que el usuario pueda saber cuanto es el valor de las coutas mensuales a pagar dependiendo del tipo de amorzacion que desee utilizar, en casa de ser alemana, se mostrara tambien cual es el valor del pago inicial que debe realziar
+     *@param propiedad la propiedad de interes por el cliente
+     * @param cuota la cantidad de coutas que desea realizar el cliente
+     * @param amortizacion el tipo de prestamo que desea realzar el cliente
+     **/
+    
     public void simularPrestamo(Propiedades propiedad, int cuota, String amortizacion){
         if(amortizacion.toLowerCase().equals("frances")){
            PrestamoFrances calculof = new PrestamoFrances(propiedad,cuota);
