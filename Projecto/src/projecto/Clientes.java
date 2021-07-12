@@ -7,11 +7,22 @@ package projecto;
 
 import Propiedades.Casas;
 import Propiedades.Propiedades;
+import Propiedades.Terreno;
 import Utilitaria.PrestamoAleman;
 import Utilitaria.PrestamoFrances;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Scanner;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
@@ -19,7 +30,7 @@ import java.util.Scanner;
  */
 public class Clientes extends Usuario {
     private LocalDate fechaNacimiento;
-    private ArrayList<String> preferencias;
+    private Alerta preferencias;
     private double prestamo;
     
     public void salir(BaseDatos bd) {
@@ -71,7 +82,7 @@ public class Clientes extends Usuario {
         } while (!opcion.equals("5"));
         salir(bd);
     }
-    public Clientes(LocalDate fechaNacimiento, ArrayList<String> preferencias, String usuario, String nombre, String cedula, String correo, String contrasenia) {
+    public Clientes(LocalDate fechaNacimiento, Alerta preferencias, String usuario, String nombre, String cedula, String correo, String contrasenia) {
         super(usuario, nombre, cedula, correo, contrasenia);
         this.fechaNacimiento = fechaNacimiento;
         this.preferencias = preferencias;
@@ -108,8 +119,8 @@ public class Clientes extends Usuario {
                     
                     break;
                 case "terreno":
-                    if (e.getPropiedad() instanceof Propiedades){
-                        Propiedades propiedad=(Propiedades)e.getPropiedad();
+                    if (e.getPropiedad() instanceof Terreno){
+                        Terreno propiedad=(Terreno)e.getPropiedad();
                         if(propiedad.getUbicacion().getCiudad().toLowerCase().equals(ciudad.toLowerCase())){
                             if(propiedad.getUbicacion().getSector().toLowerCase().equals(sector.toLowerCase())){
                                 if(propiedad.getPrecio()>=precioMin && propiedad.getPrecio()<=precioMax){
@@ -161,6 +172,95 @@ public class Clientes extends Usuario {
                 }
         return propiedadesDisponibles;
         }
+    
+    
+    public void ConsultarBuzon(BaseDatos bd){
+        
+        System.out.println("   Fecha Inicio   Código propiedad         Nombre Agente                      Pregunta                       Estado");
+        for(Consultas a: bd.getConsulta()){
+            if (a.getCliente().getNombre().equals(getNombre())&& a.getCliente().getCedula().equals(getCedula())&& a.getCliente().getUsuario().equals(getUsuario())){
+                System.out.println(a.toString());
+            }
+        }   
+    }
+    public void CrearAlerta(){
+        System.out.println("Ingrese sus preferencias: ");
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Ingrese precio Minimo: ");
+        double precioMin=sc.nextDouble();
+        System.out.println("Ingrese precio Maximo: ");
+        double precioMax=sc.nextDouble();
+        System.out.println("Ingrese tipo de propiedad que desea (terreno o casa): ");
+        String tipoPropiedad=sc.nextLine().toLowerCase();
+        System.out.println("Ingrese la ciudad de su preferencia: ");
+        String ciudad=sc.nextLine().toLowerCase();
+        System.out.println("Ingrese sector de su preferencia:" );
+        String sector=sc.nextLine().toLowerCase();
+        preferencias= new Alerta(tipoPropiedad, precioMin, precioMax, ciudad, sector);
+    }
+    
+    public boolean enviarCorreo(Propiedades p){
+        String asunto;
+        String mensaje;
+        asunto="Se ha encontrado una propiedad que se ajusta a sus preferencias";
+        switch (preferencias.getTipoPropiedad()){
+            case "casa":
+                if (p instanceof Casas){
+                    Casas casa=(Casas)p;
+                    if ((preferencias.getPrecioMin()>=casa.getPrecio()&& preferencias.getPrecioMax()<=casa.getPrecio())&&
+                        preferencias.getCiudad().equals(casa.getUbicacion().getCiudad())&& preferencias.getSector().equals(casa.getUbicacion().getSector())){
+                        
+                        mensaje=casa.toString();
+                         return correo(asunto,mensaje);
+                    }
+                }
+                break;
+            case "terreno":
+                if (p instanceof Terreno){
+                    Terreno terreno=(Terreno)p;
+                    if ((preferencias.getPrecioMin()>=terreno.getPrecio()&& preferencias.getPrecioMax()<=terreno.getPrecio())&&
+                        preferencias.getCiudad().equals(terreno.getUbicacion().getCiudad())&& preferencias.getSector().equals(terreno.getUbicacion().getSector())){
+                        mensaje=terreno.toString();
+                         return correo(asunto,mensaje);
+                    }   
+                }
+                break;
+            default:
+                return false;
+            
+        }
+       return false;
+    }
+    public boolean correo(String asunto, String mensaje){
+        try{
+            Properties p= new Properties();
+            p.put("mail.smtp.host","smtp.gmail.com");
+            p.setProperty("mail.smtp.starttls.enable", "true");
+            p.setProperty("mail.smtp.port", "587");
+            p.setProperty("mail.smtp.user","proyecto.poo1t@gmail.com");
+            p.setProperty("mail.smtp.auth", "true");
+            
+            Session s =Session.getDefaultInstance(p,null);
+            BodyPart texto= new MimeBodyPart();
+            texto.setText(mensaje);
+            MimeMultipart m= new MimeMultipart();
+            m.addBodyPart(texto);
+            MimeMessage mens= new MimeMessage(s);
+            mens.setFrom(new InternetAddress("proyecto.poo1t@gmail.com"));
+            mens.addRecipient(Message.RecipientType.TO, new InternetAddress(getCorreo()));
+            mens.setSubject(asunto);
+            mens.setContent(m);
+            Transport t= s.getTransport("smtp");
+            t.connect("proyecto.poo1t@gmail.com", "proyectopoo1");
+            t.sendMessage(mens, mens.getAllRecipients());
+            t.close();
+            return true;
+        } catch(MessagingException e){
+            System.out.println("Error"+e);
+            return false;
+        }
+        
+    }
     public void simularPrestamo(Propiedades propiedad, int cuota, String amortizacion){
         if(amortizacion.toLowerCase().equals("frances")){
            PrestamoFrances calculof = new PrestamoFrances(propiedad,cuota);

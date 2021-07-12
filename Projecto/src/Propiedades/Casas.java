@@ -25,5 +25,11 @@ public class Casas extends Propiedades{
                 +"\n Profundidad de:"+getProfundidad()+" m y Ancho de: "+getAncho()+" m"+"Cuenta con:\n"+"- "+numPisos+" pisos.\n - "
                 +numHabitaciones+"Habitaciones."+"\n Se oferta a un precio de: "+getPrecio()+"\n El agente encargado de esta propiedad es:"+getAgente());
     }
+       @Override
+    public String toString(){
+        return "Hola, se ha registrado la propiedad numero "+getCodigo()+"\n Breve descripción: "+getDescripcion()+"\n Se encuentra ubicada en: "+getUbicacion().toString()
+                +"\n Profundidad de:"+getProfundidad()+" m y Ancho de: "+getAncho()+" m"+"Cuenta con:\n"+"- "+numPisos+" pisos.\n - "
+                +numHabitaciones+"Habitaciones."+"\n Se oferta a un precio de: "+getPrecio()+"\n El agente encargado de esta propiedad es:"+getAgente();
+    }
 }
 

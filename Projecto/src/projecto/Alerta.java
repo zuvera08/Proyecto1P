@@ -43,4 +43,25 @@ public class Alerta {
     public String getSector() {
         return sector;
     }
+
+    public void setTipoPropiedad(String tipoPropiedad) {
+        this.tipoPropiedad = tipoPropiedad;
+    }
+
+    public void setPrecioMin(double precioMin) {
+        this.precioMin = precioMin;
+    }
+
+    public void setPrecioMax(double precioMax) {
+        this.precioMax = precioMax;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+    
 }
