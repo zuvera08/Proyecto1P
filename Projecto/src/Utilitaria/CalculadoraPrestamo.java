@@ -7,7 +7,7 @@ package Utilitaria;
 import Propiedades.Propiedades;
 
 /**
- *
+ *Clase abstracta para la generacion de prestamos
  * @author Ricardo Siavichay
  */
 
@@ -15,7 +15,12 @@ import Propiedades.Propiedades;
     private Propiedades propiedad;
     private int cuota;
     private String amortizacion;
-
+    /**
+     *Constructor para la clase calculador de prestamos
+     *@param propiedad se ingresa la propiedad
+     * @param cuota aqui va la cuota seleccionada por el cliente
+     * @param amortizacion el motodo a simular por el cliente
+     **/
     public CalculadoraPrestamo(Propiedades propiedad, int cuota, String amortizacion) {
         this.propiedad = propiedad;
         this.cuota = cuota;
