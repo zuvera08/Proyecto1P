@@ -15,17 +15,35 @@ public class PrestamoAleman extends CalculadoraPrestamo{
 
     private double valorInicial;
 
+    /**
+     *
+     * @param propiedad
+     * @param cuota
+     */
     public PrestamoAleman(Propiedades propiedad, int cuota) {
         super(propiedad, cuota, "Aleman");
     }
     
+    /**
+     *
+     * @return
+     */
     public double getValorInicial(){
         return valorInicial;
     }
     
+    /**
+     *
+     * @param valor
+     */
     public void setValorInicial(double valor){
         valorInicial=valor;
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public double calcularPrestamo() {
         double precio=getPropiedad().getPrecio();
