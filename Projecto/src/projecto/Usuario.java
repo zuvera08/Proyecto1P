@@ -14,10 +14,10 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.UUID;
 import projecto.BaseDatos;
-/**
- *
- * @author Danielitto
- */
+/* La clase define los Usuarios , clase padre y  atributos de usuario,nombre,cedula,etc. y sus metodos
+     * 
+     * @author JosueVera
+     */
 public class Usuario {
     private String usuario;
     private String nombre;
@@ -30,7 +30,14 @@ public class Usuario {
     public Usuario() {
     }
     
-   
+   /** Constructor para incinializar variables
+     * @param usuario
+     * * @param  nombre
+     * * @param cedula
+     * * @param correo
+     * * @param contrasenia
+     * @author JosueVera
+     */
     public Usuario(String usuario, String nombre, String cedula, String correo, String contrasenia) {
         this.usuario = usuario;
         this.nombre = nombre;
@@ -84,7 +91,11 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    //
+    /** metodos para mostrar el menu
+     * @param bd
+     
+     * @author JosueVera
+     */
     public  void iniciarMenu(BaseDatos bd){
     Scanner sc= new Scanner(System.in);
     System.out.println("IniciarSesion (1)");
@@ -138,7 +149,10 @@ public class Usuario {
     
 
     
-
+/** Metodo que reemplazaza al equals :)
+     * @param obj
+     * @author JosueVera
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj != null) {
@@ -151,6 +165,12 @@ public class Usuario {
         }
         return false;
     }
+    /** Metodo que muestrar la opcion de iniciar sesion 
+     * @param usuario
+     * * @param  bd
+     * * @param contrasenia
+     * @author JosueVera
+     */
     public void iniciarSesion( String usuario, String contrasenia, BaseDatos bd){
        Usuario u= new Usuario(usuario,contrasenia);
         
@@ -183,7 +203,16 @@ public class Usuario {
         return "Usuario{" + "usuario=" + usuario + ", nombre=" + nombre + ", cedula=" + cedula + ", correo=" + correo + ", contrasenia=" + contrasenia;
     }
     
-    
+    /** MEtodo ara registrar exclusivamente a los clientes
+     * @param nombre
+     * * @param  LocalDate
+     * * @param cedula
+     * * @param usuario
+     * * @param contrasenia
+     * @param codigo
+     * @param bd
+     * @author JosueVera
+     */
     public void registrarse(String nombre,LocalDate fechaNacimiento,String cedula ,String usuario,String contrasenia ,String codigo,BaseDatos bd){
         Scanner sc= new Scanner(System.in);
         System.out.println("Cual es su preferencia de ciudad");

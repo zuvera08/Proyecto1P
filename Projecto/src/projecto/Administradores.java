@@ -119,6 +119,7 @@ public class Administradores extends Usuario {
         double ancho = sc.nextDouble();
         System.out.println("Ingrese la profundidad de la propiedad :");
         double profundidad = sc.nextDouble();
+        sc.nextLine();
         System.out.println("Ingrese el provincia de la propiedad :");
         String provincia = sc.nextLine();
         System.out.println("Ingrese la ciudad de la propiedad :");
