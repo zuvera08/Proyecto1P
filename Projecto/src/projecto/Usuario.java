@@ -187,7 +187,18 @@ public class Usuario {
     
     
     public void registrarse(String nombre,LocalDate fechaNacimiento,String cedula ,String usuario,String contrasenia ,String codigo,BaseDatos bd){
-         ArrayList <String> a= new ArrayList <> ();
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Cual es su preferencia de ciudad");
+        String ciudad= sc.nextLine().toUpperCase();
+        System.out.println("Cual es su preferencia de sector");
+        String sector= sc.nextLine().toUpperCase();
+        System.out.println("Cual es su preferencia de propiedad(TERRENOS O CASAS)");
+        String propiedad= sc.nextLine().toUpperCase();
+        System.out.println("Cual es su preferencia de precio minimo");
+        double preMin= sc.nextDouble();
+        System.out.println("Cual es su preferencia de precio Maximo");
+        double preMax= sc.nextDouble();
+        Alerta a= new Alerta(propiedad,preMin,preMax,ciudad,sector);
         Usuario cliente= new Clientes(fechaNacimiento,a,usuario ,nombre,cedula,contrasenia ,codigo);
         bd.getUsuarios().add(cliente);
     }

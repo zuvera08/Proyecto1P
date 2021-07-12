@@ -37,8 +37,7 @@ public class Projecto {
         Usuario usuario3= new Agentes("009", "Agente009", "Zack", "0983805432", "zack@hotmail.com", "Zack2400");
         datos.getUsuarios().add(usuario3);
         
-        
-        ArrayList <String> a= new ArrayList <> ();
+        Alerta a= new Alerta("CASAS",3,10,"GUAYAQUIL","IZQUIERDA");
         Usuario usuario4= new Clientes(LocalDate.parse("2001-09-01"),a,"Venededor16","Pepe","201914959","pepitoindustries@hotmail.com","Spiderman3400");
         datos.getUsuarios().add(usuario4);
         
@@ -50,7 +49,8 @@ public class Projecto {
         Venta venta1= new Venta(propiedadesventas1,LocalDate.parse("2019-12-12"),(Agentes)usuario2,(Clientes)usuario3);
         datos.getVentas().add(venta1);
         
-        Usuario usuario5= new Clientes(LocalDate.parse("2001-10-02"),a,"Venededor17","Pepex","201914964","pepitoxindustries@hotmail.com","Spiderman4400");
+        Alerta B= new Alerta("Casas",2,10,"GUAYAQUIL","DERECHA");
+        Usuario usuario5= new Clientes(LocalDate.parse("2001-10-02"),B,"Venededor17","Pepex","201914964","pepitoxindustries@hotmail.com","Spiderman4400");
         datos.getUsuarios().add(usuario5);
         
         Ubicacion ubicacionpropiedades2= new Ubicacion("GUAYAS","GUAYASQUIL","SAUCES 4","IZQUIERDA");
