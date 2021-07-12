@@ -108,7 +108,7 @@ public class Administradores extends Usuario {
      * @param bd El parametro bd es la base de datos
      * @author JosueVera
      */
-    public void registrarPropiedad(BaseDatos bd) {
+    public void registrarPropiedad(BaseDatos bd){
         System.out.println("Ingrese la propiedad a registrar (TERRENO o CASAS)");
         String propiedad = sc.nextLine().toUpperCase();
         System.out.println("Ingrese el precio de la propiedad :");
@@ -119,7 +119,6 @@ public class Administradores extends Usuario {
         double ancho = sc.nextDouble();
         System.out.println("Ingrese la profundidad de la propiedad :");
         double profundidad = sc.nextDouble();
-        sc.next();
         System.out.println("Ingrese el provincia de la propiedad :");
         String provincia = sc.nextLine();
         System.out.println("Ingrese la ciudad de la propiedad :");
@@ -159,13 +158,13 @@ public class Administradores extends Usuario {
         //String codigoAgente, String usuario, String nombre, String cedula, String correo, String contrasenia
         String codigoAgente = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
         System.out.println("Ingrese el Usuario del agente :");
-        String usuario = sc.next();
+        String usuario = sc.nextLine();
         System.out.println("Ingrese el nombre de agente:");
-        String nombre = sc.next();
+        String nombre = sc.nextLine();
         System.out.println("Ingrese la cedula del agente :");
-        String cedula = sc.next();
+        String cedula = sc.nextLine();
         System.out.println("Ingrese el correo del agente:");
-        String correo = sc.next();
+        String correo = sc.nextLine();
         String contraseñia = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
         Agentes agente = new Agentes(codigoAgente, usuario, nombre, cedula, correo, contraseñia);
         bd.getUsuarios().add(agente);

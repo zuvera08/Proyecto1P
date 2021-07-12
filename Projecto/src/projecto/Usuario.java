@@ -24,15 +24,13 @@ public class Usuario {
     private String cedula;
     private String correo;
     private String contrasenia;
-    
-    
     public Administradores administrador;
     public Clientes cliente;
     public Agentes agente;
     public Usuario() {
     }
     
-    
+   
     public Usuario(String usuario, String nombre, String cedula, String correo, String contrasenia) {
         this.usuario = usuario;
         this.nombre = nombre;
