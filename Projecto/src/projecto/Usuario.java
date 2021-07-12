@@ -96,6 +96,11 @@ public class Usuario {
      
      * @author JosueVera
      */
+    
+    public void salir(BaseDatos bd) {
+        Usuario u = new Usuario();
+       u.iniciarMenu(bd);
+    }
     public  void iniciarMenu(BaseDatos bd){
     Scanner sc= new Scanner(System.in);
     System.out.println("IniciarSesion (1)");
@@ -213,6 +218,7 @@ public class Usuario {
      * @param bd
      * @author JosueVera
      */
+     
     public void registrarse(String nombre,LocalDate fechaNacimiento,String cedula ,String usuario,String contrasenia ,String codigo,BaseDatos bd){
         Scanner sc= new Scanner(System.in);
         System.out.println("Cual es su preferencia de ciudad");
@@ -225,9 +231,12 @@ public class Usuario {
         double preMin= sc.nextDouble();
         System.out.println("Cual es su preferencia de precio Maximo");
         double preMax= sc.nextDouble();
+        sc.nextLine();
         Alerta a= new Alerta(propiedad,preMin,preMax,ciudad,sector);
         Usuario cliente= new Clientes(fechaNacimiento,a,usuario ,nombre,cedula,contrasenia ,codigo);
         bd.getUsuarios().add(cliente);
+        System.out.println("Registro Exitoso");
+        salir(bd);
     }
     
     
