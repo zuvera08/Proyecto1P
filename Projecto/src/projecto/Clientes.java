@@ -399,10 +399,10 @@ public class Clientes extends Usuario {
     public void simularPrestamo(Propiedades propiedad, int cuota, String amortizacion){
         if(amortizacion.toLowerCase().equals("frances")){
            PrestamoFrances calculof = new PrestamoFrances(propiedad,cuota);
-           System.out.println("Cuoras: "+cuota+" --- "+"Valor de la cuota: "+calculof.calcularPrestamo() );
+           System.out.println("Cuotas: "+cuota+" --- "+"Valor de la cuota: "+calculof.calcularPrestamo() );
         }else if(amortizacion.toLowerCase().equals("aleman")){
            PrestamoAleman calculoa = new PrestamoAleman(propiedad,cuota);
-           System.out.println("Cuoras: "+cuota+" --- "+"Valor de la cuota: "+calculoa.calcularPrestamo()+" --- "+"Valor incial a pagar: "+calculoa.getValorInicial() );
+           System.out.println("Cuotas: "+cuota+" --- "+"Valor de la cuota: "+calculoa.calcularPrestamo()+" --- "+"Valor incial a pagar: "+calculoa.getValorInicial() );
         }
     }
 }

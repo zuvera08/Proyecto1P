@@ -43,6 +43,23 @@ public class Ubicacion {
     public String getSector() {
         return sector;
     }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+    
     @Override
     public String toString(){
        return provincia+", "+ciudad+", "+direccion+", "+sector; 
