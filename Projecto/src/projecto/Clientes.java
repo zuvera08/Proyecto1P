@@ -37,6 +37,7 @@ public class Clientes extends Usuario {
     *Metodo que le da la opcion de salir al usuario de donde se encuentre
     * @param bd la base de datos donde se encuentre
     **/
+    @Override
     public void salir(BaseDatos bd) {
         Usuario u = new Usuario();
         u.iniciarMenu(bd);
@@ -79,7 +80,7 @@ public class Clientes extends Usuario {
                     System.out.println("Ingrese el codigo de la propiedad que desea más a detalle ( o vacío para regresar):");
                     String detalle=sc.nextLine();
                     Propiedades propiedad=null;
-                    if (detalle!=""){
+                    if (!"".equals(detalle)){
                         for(Propiedades p:bd.getPropiedades()){
                             if(detalle.equals(p.getCodigo())){
                                 p.mostrarInfoPropiedad();
@@ -111,7 +112,7 @@ public class Clientes extends Usuario {
                     ConsultarBuzon(bd);
                     System.out.println("Ingrese el codigo de la propiedad que desea más a detalle ( o vacío para regresar):");
                     String detalle1=sc.nextLine();
-                    if(detalle1!=""){
+                    if(!"".equals(detalle1)){
                         Propiedades propiedad1=null;
                         for(Propiedades p:bd.getPropiedades()){
                             if(detalle1.equals(p.getCodigo())){

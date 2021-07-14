@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Propiedades.Propiedades;
+import java.time.LocalDateTime;
 
 /* La clase define los Agentes que se extiendes de Usuarios, Los mismos poseen atributos de usuario,nombre,cedula,etc. y sus metodos
      * 
@@ -24,6 +25,7 @@ public class Agentes extends Usuario {
      * @param bd
      * @author JosueVera
      */
+    @Override
     public void salir(BaseDatos bd) {
         Usuario u = new Usuario();
        u.iniciarMenu(bd);
@@ -100,19 +102,20 @@ public class Agentes extends Usuario {
                 }
                 String respuesta = "";
                 do {
-                    System.out.println("Desea responder alguna consulta?");
+                    System.out.println("Desea responder alguna consulta?. ");
                     respuesta = sc.nextLine();
                     sc.next();
 
-                    System.out.println("Ingrese el codigo de consulta que desee reesponder");
+                    System.out.println("Ingrese el codigo de consulta que desee reesponder: ");
                     String cod = sc.nextLine();
                     sc.next();
                     for (Consultas c : listaconsultas) {
                         if (c.getPropiedad().getAgente().getCodigoAgente().equals(cod)) {
-                            System.out.println("Ingrese su respuesta");
+                            System.out.println("Ingrese su respuesta: ");
                             String Oracion = sc.nextLine();
                             sc.next();
                             c.setRespuesta(Oracion);
+                            c.setFechaFin(LocalDateTime.now());
                             c.setEstadoRespuesta(true);
                             System.out.println("Contestado");
                         }

@@ -22,21 +22,11 @@ public class Consultas {
     private boolean estadoConsulta; //si ya ha consultado o no sobre la proiedad
     private String respuesta;
     private Propiedades propiedad;
-    
     /**
-     * El constructor Consultas  inicializa las variables
-     * @param  fechaInicio
-     *  @param  Propieadad
-     *  @param  Agente
-     *  @param  CLiente
-     *  @param  Pregunta
-     *  @param  Estado
-     *  @param  Respuesta
-     * @author JosueVera
+     * Constructor de la clase agente
+     * @param propiedad Propiedad a la que se refiere la consulta
      */
 
-
-    
     public Consultas(Propiedades propiedad){
         fechaInicio= LocalDateTime.now();
         fechaFin=null;
