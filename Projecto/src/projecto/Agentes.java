@@ -93,7 +93,7 @@ public class Agentes extends Usuario {
     public void revizarBuzon(BaseDatos bd) {
         ArrayList<Consultas> listaconsultas = new ArrayList<>();
         for (Consultas consul : bd.getConsulta()) {
-            if (this.agente.getNombre().equals(consul.getAgente())) {
+            if (this.agente.getNombre().equals(consul.getPropiedad().getAgente().getNombre())) {
                 listaconsultas.add(consul);
                 for (Consultas c : listaconsultas) {
                     System.out.println(c);
@@ -108,12 +108,13 @@ public class Agentes extends Usuario {
                     String cod = sc.nextLine();
                     sc.next();
                     for (Consultas c : listaconsultas) {
-                        if (c.getCodigoPropiedad().equals(cod)) {
+                        if (c.getPropiedad().getAgente().getCodigoAgente().equals(cod)) {
                             System.out.println("Ingrese su respuesta");
                             String Oracion = sc.nextLine();
                             sc.next();
                             c.setRespuesta(Oracion);
-                            System.out.println("Contstado");
+                            c.setEstadoRespuesta(true);
+                            System.out.println("Contestado");
                         }
                     }
                 } while (respuesta != "NO");

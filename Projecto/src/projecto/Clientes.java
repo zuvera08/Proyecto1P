@@ -57,22 +57,98 @@ public class Clientes extends Usuario {
             sc.nextLine();
             switch (opcion) {
                 case "1":
-                    System.out.println("Ingrese el precio minimo");
-                    double precioMin= sc.nextInt();
-                    System.out.println("Ingrese el precio maximo");
-                    double precioMax= sc.nextInt();
-                    sc.next();
-                    System.out.println("Ingrese el tipo de propiedad");
+                    
+                    System.out.println("Ingrese el tipo de propiedad:");
                     String tipoPropiedad= sc.nextLine();
-                    String fechaNacimiento= sc.nextLine();
-                    System.out.println("Ingrese la ciudad");
+                    System.out.println("Ingrese el precio minimo:");
+                    double precioMin= sc.nextInt();
+                    System.out.println("Ingrese el precio maximo:");
+                    double precioMax= sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("Ingrese la ciudad:");
                     String ciudad= sc.nextLine();
-                    System.out.println("Ingrese el sector");
+                    System.out.println("Ingrese el sector:");
                     String sector= sc.nextLine();
-                    consultarPropiedadesDisponibles(precioMin,precioMax, tipoPropiedad, ciudad, sector,bd) ;
+                    ArrayList<Propiedades> propiedadesDisponibles=consultarPropiedadesDisponibles(precioMin,precioMax, tipoPropiedad, ciudad, sector,bd) ;
+                    System.out.println("   Código         Descripción         Precio      Tamaño         Ubicación          Consultada   ");
+                    for (Propiedades p: propiedadesDisponibles){
+                        for(Consultas c:bd.getConsulta()){
+                            System.out.println(p.toString()+"   "+p.getUbicacion().toString()+"   "+c.propiedadConsultada(p));
+                        }    
+                    }
+                    System.out.println("Ingrese el codigo de la propiedad que desea más a detalle ( o vacío para regresar):");
+                    String detalle=sc.nextLine();
+                    Propiedades propiedad=null;
+                    if (detalle!=""){
+                        for(Propiedades p:bd.getPropiedades()){
+                            if(detalle.equals(p.getCodigo())){
+                                p.mostrarInfoPropiedad();
+                                propiedad=p;
+                            }
+                        }
+                        System.out.println("Desea realizar consulta(si/no):");
+                        String confirmacion=sc.nextLine().toLowerCase();
+                        if("si".equals(confirmacion)){
+                            System.out.println("Ingrese su consulta:");
+                            String pregunta=sc.nextLine();
+                            for(Usuario u:bd.getUsuarios()){
+                                if(u instanceof Clientes){
+                                    Clientes c=(Clientes)u;
+                                    if(c.getCedula().equals(getCedula())){
+                                        registrarConsulta(pregunta,propiedad,c);
+                                    }
+                                }
+                            }
+                        }else{
+                            opcion="5";
+                        }
+                    }else{
+                        opcion="5";
+                    }
+                    
                     break;
                 case "2":
                     ConsultarBuzon(bd);
+                    System.out.println("Ingrese el codigo de la propiedad que desea más a detalle ( o vacío para regresar):");
+                    String detalle1=sc.nextLine();
+                    if(detalle1!=""){
+                        Propiedades propiedad1=null;
+                        for(Propiedades p:bd.getPropiedades()){
+                            if(detalle1.equals(p.getCodigo())){
+                                propiedad=p; //se refiere a una propiedad en específico, que tiene un solo agente.
+                                for(Consultas c:bd.getConsulta()){
+                                    if(c.getCliente().getCedula().equals(getCedula())){ //Obtiene las consultas que ha hecho un cliente sobre una propiedad
+                                        if(c.getRespuesta()!= null){
+                                            System.out.println(c.getFechaInicio()+": Cliente:"+c.getPregunta());
+                                            System.out.println(c.getFechaFin()+": Agente:"+c.getRespuesta());
+                                        }else{
+                                            System.out.println(c.getFechaInicio()+": Cliente:"+c.getPregunta());
+                                            System.out.println("Lo sentimos, su pregunta aún no ha sido respondida");
+                                        }
+                                    }
+                                    System.out.println("Usted no ha hecho consultas sobre esta propiedad");
+                                }
+                            }
+                        }
+                        System.out.println("Desea agregar una pregunta o regresar(si/no):");
+                        String confirmacion1=sc.nextLine().toLowerCase();
+                        if("si".equals(confirmacion1)){
+                            System.out.println("Ingrese la pregunta:");
+                            String pregunta1=sc.nextLine();
+                            for(Usuario u:bd.getUsuarios()){
+                                if(u instanceof Clientes){
+                                    Clientes c=(Clientes)u;
+                                    if(c.getCedula().equals(getCedula())){
+                                        registrarConsulta(pregunta1,propiedad1,c);
+                                    }
+                                }
+                            }
+                        }else{
+                            opcion="5";
+                        }
+                    }else{
+                        opcion="5";
+                    }
                     break;
                 case "3":
                     CrearAlerta();
@@ -201,6 +277,14 @@ public class Clientes extends Usuario {
                 }
         return propiedadesDisponibles;
         }
+    /**
+     * Este método permite registrar una consulta
+     */
+    public void registrarConsulta(String pregunta,Propiedades propiedad, Clientes cliente) {
+        Consultas consulta=new Consultas(propiedad);
+        consulta.setPregunta(pregunta);
+        consulta.setCliente(cliente);
+    }
     
     
     /**
@@ -211,7 +295,7 @@ public class Clientes extends Usuario {
         System.out.println("   Fecha Inicio   Código propiedad         Nombre Agente                      Pregunta                       Estado");
         for(Consultas a: bd.getConsulta()){
             if (a.getCliente().getNombre().equals(getNombre())&& a.getCliente().getCedula().equals(getCedula())&& a.getCliente().getUsuario().equals(getUsuario())){
-                System.out.println(a.toString());
+                System.out.println(a.mostrarPreguntas());
             }
         }   
     }
@@ -234,11 +318,10 @@ public class Clientes extends Usuario {
         preferencias= new Alerta(tipoPropiedad, precioMin, precioMax, ciudad, sector);
     }
     /**
-     *Este metodo permite enviar un correo al agnete de la propiedad que se encuentra interesado el cleinte
-     * @param p la propiedad de interes
-     * @return boolean verdadero si se envio con exito, falso si ocurrio un error
-     **/
-    public boolean enviarCorreo(Propiedades p){
+     * Este método envía un correo si se cumple con todas las exigencias y preferencias del cliente
+     * @param p 
+     */
+    public void enviarCorreo(Propiedades p){
         String asunto;
         String mensaje;
         asunto="Se ha encontrado una propiedad que se ajusta a sus preferencias";
@@ -247,10 +330,9 @@ public class Clientes extends Usuario {
                 if (p instanceof Casas){
                     Casas casa=(Casas)p;
                     if ((preferencias.getPrecioMin()>=casa.getPrecio()&& preferencias.getPrecioMax()<=casa.getPrecio())&&
-                        preferencias.getCiudad().equals(casa.getUbicacion().getCiudad())&& preferencias.getSector().equals(casa.getUbicacion().getSector())){
-                        
+                        preferencias.getCiudad().equals(casa.getUbicacion().getCiudad())&& preferencias.getSector().equals(casa.getUbicacion().getSector())){ 
                         mensaje=casa.toString();
-                         return correo(asunto,mensaje);
+                        correo(asunto,mensaje);
                     }
                 }
                 break;
@@ -260,16 +342,22 @@ public class Clientes extends Usuario {
                     if ((preferencias.getPrecioMin()>=terreno.getPrecio()&& preferencias.getPrecioMax()<=terreno.getPrecio())&&
                         preferencias.getCiudad().equals(terreno.getUbicacion().getCiudad())&& preferencias.getSector().equals(terreno.getUbicacion().getSector())){
                         mensaje=terreno.toString();
-                         return correo(asunto,mensaje);
+                        correo(asunto,mensaje);
                     }   
                 }
                 break;
             default:
-                return false;
+                
             
         }
-       return false;
+       
     }
+    /**
+     * Este método permite enviar un correo
+     * @param asunto
+     * @param mensaje
+     * @return boolean si se logró enviar el correo
+     */
     public boolean correo(String asunto, String mensaje){
         try{
             Properties p= new Properties();

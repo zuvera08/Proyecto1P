@@ -5,6 +5,7 @@
  */
 package projecto;
 
+import Propiedades.Propiedades;
 import java.time.LocalDateTime;
 
 /**
@@ -14,12 +15,13 @@ import java.time.LocalDateTime;
      */
 public class Consultas {
     private LocalDateTime fechaInicio;
-    private String codigoPropiedad;
-    private Agentes agente ;
+    private LocalDateTime fechaFin;
     private Clientes cliente;
     private String pregunta;
-    private boolean estado;
+    private boolean estadoRespuesta; //si se ha respondido o está en espera de una respuesta
+    private boolean estadoConsulta; //si ya ha consultado o no sobre la proiedad
     private String respuesta;
+    private Propiedades propiedad;
     
     /**
      * El constructor Consultas  inicializa las variables
@@ -32,23 +34,19 @@ public class Consultas {
      *  @param  Respuesta
      * @author JosueVera
      */
-    public Consultas(LocalDateTime fechaInicio, String codigoPropiedad, Agentes agente, Clientes cliente, String pregunta, boolean estado, String respuesta) {
-        this.fechaInicio = fechaInicio;
-        this.codigoPropiedad = codigoPropiedad;
-        this.agente = agente;
-        this.cliente = cliente;
-        this.pregunta = pregunta;
-        this.estado = estado;
-        this.respuesta = respuesta;
-    }
+
 
     
-    public void registrarConsulta(Clientes cliente, String pregunta, String codigo){
+    public Consultas(Propiedades propiedad){
         fechaInicio= LocalDateTime.now();
-        this.cliente=cliente;
-        this.pregunta=pregunta;
-        estado=true;
-        codigoPropiedad=codigo;
+        fechaFin=null;
+        cliente=null;
+        pregunta=null;
+        estadoRespuesta=false;
+        estadoConsulta=true;
+        respuesta = null;
+        this.propiedad = propiedad;
+        
     
     }
 
@@ -56,24 +54,48 @@ public class Consultas {
         return fechaInicio;
     }
 
-    public String getCodigoPropiedad() {
-        return codigoPropiedad;
+    public void setFechaInicio(LocalDateTime fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
-    public Agentes getAgente() {
-        return agente;
+    public LocalDateTime getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(LocalDateTime fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public Clientes getCliente() {
         return cliente;
     }
 
+    public void setCliente(Clientes cliente) {
+        this.cliente = cliente;
+    }
+
     public String getPregunta() {
         return pregunta;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
+    }
+
+    public boolean isEstadoRespuesta() {
+        return estadoRespuesta;
+    }
+
+    public void setEstadoRespuesta(boolean estadoRespuesta) {
+        this.estadoRespuesta = estadoRespuesta;
+    }
+
+    public boolean isEstadoConsulta() {
+        return estadoConsulta;
+    }
+
+    public void setEstadoConsulta(boolean estadoConsulta) {
+        this.estadoConsulta = estadoConsulta;
     }
 
     public String getRespuesta() {
@@ -83,9 +105,27 @@ public class Consultas {
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
     }
+
+    public Propiedades getPropiedad() {
+        return propiedad;
+    }
+
+    public void setPropiedad(Propiedades propiedad) {
+        this.propiedad = propiedad;
+    }
+
     
-    @Override
-    public String toString(){
-        return fechaInicio+"    "+codigoPropiedad+"    "+agente.getNombre()+"    "+pregunta+"    "+estado;
+    public String mostrarPreguntas(){
+        if (estadoRespuesta==true){
+            return fechaInicio+"    "+propiedad.getCodigo()+"    "+propiedad.getAgente().getNombre()+"    "+pregunta+"    "+"Respondido";
+        }
+        return fechaInicio+"    "+propiedad.getCodigo()+"    "+propiedad.getAgente().getNombre()+"    "+pregunta+"    "+"Esperando";
+        
+    }
+    public String propiedadConsultada(Propiedades p){
+        if(propiedad.equals(p)&&estadoConsulta==true){
+            return "SI";
+        }
+        return "NO";
     }
 }

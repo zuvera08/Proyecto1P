@@ -137,6 +137,12 @@ public class Administradores extends Usuario {
             Terreno terreno = new Terreno( precio, ancho, profundidad, ubi, agente, codigo,tasa, TiposTerreno.valueOf(tipoTerreno));
             bd.getPropiedades().add(terreno);
             System.out.println("REGISTRADO");
+            for(Usuario u:bd.getUsuarios()){
+            if(u instanceof Clientes){
+                Clientes c=(Clientes)u;
+                c.enviarCorreo(terreno);
+            }
+            }
         }
         if (propiedad.equals("CASAS")) {
             System.out.println("Ingrese el numero de pisos de la propiedad :");
@@ -147,7 +153,14 @@ public class Administradores extends Usuario {
             Casas casa = new Casas(numPisos,numHabitaciones, precio, ancho, profundidad, ubi, agente, codigo,tasa);
             bd.getPropiedades().add(casa);
             System.out.println("REGISTRADO");
+            for(Usuario u:bd.getUsuarios()){
+            if(u instanceof Clientes){
+                Clientes c=(Clientes)u;
+                c.enviarCorreo(casa);
+            }
+            }
         }
+        
     }
     
     /**

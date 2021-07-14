@@ -28,17 +28,18 @@ public class Projecto {
     public static void main(String[] args) {
         BaseDatos datos= new BaseDatos() ;
         Usuario usuario= new Usuario();
-        Usuario usuario1= new Administradores("ADMIN1","Guillermo", "0983805499","guiller@hotmail.com","Spiderman1400");
+        Usuario usuario1= new Administradores("ADMIN1","Guillermo", "0983805499","guiller@gmail.com","Spiderman1400");
         datos.getUsuarios().add(usuario1);
         
-        Usuario usuario2= new Agentes("007", "Agente007", "Luque", "0983805419", "luque@hotmail.com", "Spiderman2400");
+        Usuario usuario2= new Agentes("007", "Agente007", "Luque", "0983805419", "luque@gmail.com", "Spiderman2400");
         datos.getUsuarios().add(usuario2);
         
-        Usuario usuario3= new Agentes("009", "Agente009", "Zack", "0983805432", "zack@hotmail.com", "Zack2400");
+        Usuario usuario3= new Agentes("009", "Agente009", "Zack", "0983805432", "zack@gmail.com", "Zack2400");
         datos.getUsuarios().add(usuario3);
         
         Alerta a= new Alerta("CASAS",3,10,"GUAYAQUIL","IZQUIERDA");
-        Usuario usuario4= new Clientes(LocalDate.parse("2001-09-01"),a,"Venededor16","Pepe","201914959","pepitoindustries@hotmail.com","Spiderman3400");
+        
+        Usuario usuario4= new Clientes(LocalDate.parse("2001-09-01"),a,"Venededor16","Pepe","201914959","pepitoindustries@gmail.com","Spiderman3400");
         datos.getUsuarios().add(usuario4);
         
         Ubicacion ubicacionpropiedades1= new Ubicacion("GUAYAS","GUAYAQUIL","SAUCES 4","IZQUIERDA");
