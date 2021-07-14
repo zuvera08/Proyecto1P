@@ -60,16 +60,16 @@ public class Clientes extends Usuario {
                 case "1":
                     
                     System.out.println("Ingrese el tipo de propiedad:");
-                    String tipoPropiedad= sc.nextLine();
+                    String tipoPropiedad= sc.nextLine().toLowerCase();
                     System.out.println("Ingrese el precio minimo:");
-                    double precioMin= sc.nextInt();
+                    double precioMin= sc.nextDouble();
                     System.out.println("Ingrese el precio maximo:");
-                    double precioMax= sc.nextInt();
+                    double precioMax= sc.nextDouble();
                     sc.nextLine();
                     System.out.println("Ingrese la ciudad:");
-                    String ciudad= sc.nextLine();
+                    String ciudad= sc.nextLine().toLowerCase();
                     System.out.println("Ingrese el sector:");
-                    String sector= sc.nextLine();
+                    String sector= sc.nextLine().toLowerCase();
                     ArrayList<Propiedades> propiedadesDisponibles=consultarPropiedadesDisponibles(precioMin,precioMax, tipoPropiedad, ciudad, sector,bd) ;
                     System.out.println("   Código         Descripción         Precio      Tamaño         Ubicación          Consultada   ");
                     for (Propiedades p: propiedadesDisponibles){
@@ -166,10 +166,10 @@ public class Clientes extends Usuario {
                             System.out.println("Ingrese la amortizacion deseada");
                             String amortizacion= sc.nextLine();
                             simularPrestamo(p,cuota,amortizacion);
-                            break;
+                            
                         }
                     }
-                   
+                    break;
                     default:
                     System.out.println("Opcion Incorrecta");
                 break;
