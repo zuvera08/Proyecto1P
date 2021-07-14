@@ -10,6 +10,7 @@ import Propiedades.Propiedades;
 import Propiedades.Terreno;
 import Utilitaria.PrestamoAleman;
 import Utilitaria.PrestamoFrances;
+import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -285,6 +286,10 @@ public class Clientes extends Usuario {
         Consultas consulta=new Consultas(propiedad);
         consulta.setPregunta(pregunta);
         consulta.setCliente(cliente);
+        Integer i=parseInt(consulta.getCodigoConsulta());
+        i++;
+        consulta.setCodigoConsulta(i.toString());
+        
     }
     
     

@@ -95,14 +95,20 @@ public class Agentes extends Usuario {
     public void revizarBuzon(BaseDatos bd) {
         ArrayList<Consultas> listaconsultas = new ArrayList<>();
         for (Consultas consul : bd.getConsulta()) {
-            if (this.agente.getNombre().equals(consul.getPropiedad().getAgente().getNombre())) {
+            if (this.agente.getNombre().equals(consul.getPropiedad().getAgente().getNombre())&&consul.isEstadoRespuesta()==false) {
                 listaconsultas.add(consul);
                 for (Consultas c : listaconsultas) {
-                    System.out.println(c);
+                    if(c.isEstadoRespuesta()==false){
+                        System.out.println("El cliente "+c.getCliente().getNombre()+" PRESENTA la siguiente duda:\n"+c.getPregunta()+"sobre la propiedad de código "+c.getPropiedad().getCodigo()+
+                                " con codigo de consulta numero: "+c.getCodigoConsulta());
+                    }else{
+                        System.out.println("El cliente "+c.getCliente().getNombre()+" PRESENTÓ la siguiente duda:\n"+c.getPregunta()+"sobre la propiedad de código "+c.getPropiedad().getCodigo()+
+                                " con codigo de consulta numero: "+c.getCodigoConsulta());
+                    }
                 }
                 String respuesta = "";
                 do {
-                    System.out.println("Desea responder alguna consulta?. ");
+                    System.out.println("Desea responder alguna consulta?: ");
                     respuesta = sc.nextLine();
                     sc.next();
 
@@ -110,7 +116,7 @@ public class Agentes extends Usuario {
                     String cod = sc.nextLine();
                     sc.next();
                     for (Consultas c : listaconsultas) {
-                        if (c.getPropiedad().getAgente().getCodigoAgente().equals(cod)) {
+                        if (c.getCodigoConsulta().equals(cod)) {
                             System.out.println("Ingrese su respuesta: ");
                             String Oracion = sc.nextLine();
                             sc.next();

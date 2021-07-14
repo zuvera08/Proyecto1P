@@ -22,6 +22,7 @@ public class Consultas {
     private boolean estadoConsulta; //si ya ha consultado o no sobre la proiedad
     private String respuesta;
     private Propiedades propiedad;
+    private String codigoConsulta;
     /**
      * Constructor de la clase agente
      * @param propiedad Propiedad a la que se refiere la consulta
@@ -36,6 +37,8 @@ public class Consultas {
         estadoConsulta=true;
         respuesta = null;
         this.propiedad = propiedad;
+        codigoConsulta="0";
+        
         
     
     }
@@ -104,6 +107,14 @@ public class Consultas {
         this.propiedad = propiedad;
     }
 
+    public String getCodigoConsulta() {
+        return codigoConsulta;
+    }
+
+    public void setCodigoConsulta(String codigoConsulta) {
+        this.codigoConsulta = codigoConsulta;
+    }
+    
     
     public String mostrarPreguntas(){
         if (estadoRespuesta==true){
