@@ -1,23 +1,23 @@
 # Proyecto1P 
-Este repositorio contiene el proyecto del primer parcial del grupo #8 de Programación Orientada a Objetos PAO 2021-2022 ESPOL.
+Este repositorio contiene el proyecto del primer parcial del grupo #8 de ProgramaciÃ³n Orientada a Objetos PAO 2021-2022 ESPOL.
 Credenciales de usuario de los Integrantes:
 - Josue Vera: Jodavera
-- Adrian Siavichay: 
+- Adrian Siavichay: Adrisiav
 - Zuleyka Vera: zuvera08
 
 Creadenciales de Admin
 Hay un admin en el programa, sus credenciales son:
 Usuario= ADMIN1 (El ingreso del usuario tiene que ser exactamente ADMIN1)
-Contrasenia=  Spiderman1400 (El ingreso de  la contrase�a tiene que ser exactamente Spiderman2400)
+Contrasenia=  Spiderman1400 (El ingreso de  la contraseña tiene que ser exactamente Spiderman2400)
 
 Credenciales de 2 Agentes
 AGENTE 1
 Usuario= Agente007
-Contrase�a= Spiderman2400
+Contraseña= Spiderman2400
 
 AGENTE2
 Usuario= Agente009
-Contrase�a= Zack2400
+Contraseña= Zack2400
 
 Credenciales para Trabajar copn Porpiedades existentes
 En el programa ya existen 4 propiedades, son:
@@ -65,7 +65,7 @@ INTRUCCIONES PARA EL USO DE INICIAR SESION
 Cuando se ejecute el programa se mostrar dos opciones, Iniciar Sesion y Registrarse, Registarse es solo en caso que usted sea un cliente nuevo
 
 Iniciar Sesion////
-Debere Ingresar su Usuario y Contrase�a de forma exactas para evitar inconvenientes
+Debere Ingresar su Usuario y Contraseña de forma exactas para evitar inconvenientes
 Despues segun su Usuario, se le pueden mostrar tres menus (Administrador, Cliente y Agente)
 En cada Opcion Ya se especifica las entradas
 Pero tomar en cuenta el formato empleado anteriormente
