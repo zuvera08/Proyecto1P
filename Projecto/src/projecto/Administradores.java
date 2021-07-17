@@ -149,13 +149,15 @@ public class Administradores extends Usuario {
             int numPisos = sc.nextInt();
             System.out.println("Ingrese el numero de habitaciones de la propiedad :");
             int numHabitaciones = sc.nextInt();
+            sc.nextLine();
             String codigo = UUID.randomUUID().toString().toUpperCase();
-            Casas casa = new Casas(numPisos,numHabitaciones, precio, ancho, profundidad, ubi, agente, codigo,tasa);
+            Propiedades casa = new Casas(numPisos,numHabitaciones, precio, ancho, profundidad, ubi, agente, codigo,tasa);
             bd.getPropiedades().add(casa);
             System.out.println("REGISTRADO");
             for(Usuario u:bd.getUsuarios()){
             if(u instanceof Clientes){
                 Clientes c=(Clientes)u;
+                System.out.println(c.getNombre());
                 c.enviarCorreo(casa);
             }
             }

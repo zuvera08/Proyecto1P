@@ -28,7 +28,7 @@ public class Projecto {
     public static void main(String[] args) {
         BaseDatos datos= new BaseDatos() ;
         Usuario usuario= new Usuario();
-        Usuario usuario1= new Administradores("ADMIN1","Guillermo", "0983805499","guiller@gmail.com","Spiderman1400");
+        Usuario usuario1= new Administradores("adm","Guillermo", "0983805499","guiller@gmail.com","adm");
         datos.getUsuarios().add(usuario1);
         
         Usuario usuario2= new Agentes("007", "Agente007", "Luque", "0983805419", "luque@gmail.com", "Spiderman2400");
@@ -37,9 +37,9 @@ public class Projecto {
         Usuario usuario3= new Agentes("009", "Agente009", "Zack", "0983805432", "zack@gmail.com", "Zack2400");
         datos.getUsuarios().add(usuario3);
         
-        Alerta a= new Alerta("CASAS",3,10,"GUAYAQUIL","IZQUIERDA");
+        Alerta a= new Alerta("CASAS",0,10000,"guayaquil","sauces");
         
-        Usuario usuario4= new Clientes(LocalDate.parse("2001-09-01"),a,"Venededor16","Pepe","201914959","pepitoindustries@gmail.com","Spiderman3400");
+        Usuario usuario4= new Clientes(LocalDate.parse("2001-09-01"),a,"adri","adri","201914959","adrian2x2001@gmail.com","adri");
         datos.getUsuarios().add(usuario4);
         
         Ubicacion ubicacionpropiedades1= new Ubicacion("GUAYAS","GUAYAQUIL","SAUCES 4","IZQUIERDA");
@@ -50,7 +50,7 @@ public class Projecto {
         Venta venta1= new Venta(propiedadesventas1,LocalDate.parse("2019-12-12"),(Agentes)usuario2,(Clientes)usuario4);
         datos.getVentas().add(venta1);
         
-        Alerta B= new Alerta("Casas",2,10,"GUAYAQUIL","DERECHA");
+        Alerta B= new Alerta("TERRENOS",0,10000,"guayaquil","dere");
         Usuario usuario5= new Clientes(LocalDate.parse("2001-10-02"),B,"Venededor17","Pepex","201914964","pepitoxindustries@hotmail.com","Spiderman4400");
         datos.getUsuarios().add(usuario5);
         
@@ -62,7 +62,7 @@ public class Projecto {
         datos.getVentas().add(venta2);
         
         Ubicacion ubicacionpropiedades3= new Ubicacion("GUAYAS","DAULE","DAULE","DERECHA");
-        Propiedades propiedadesventas3= new Terreno(5,7,8,ubicacionpropiedades3,(Agentes)usuario2,"CDB",5.5,TiposTerreno.COMERSIAL);
+        Propiedades propiedadesventas3= new Terreno(5,7,8,ubicacionpropiedades3,(Agentes)usuario2,"CDB",5.5,TiposTerreno.COMERCIAL);
         datos.getPropiedades().add(propiedadesventas3);
         
         Ubicacion ubicacionpropiedades4= new Ubicacion("GUAYAS","DAULE","DAULE","DERECHA");

@@ -10,5 +10,5 @@ package Propiedades;
  * @author Ricardo Siavichay
  */
 public enum TiposTerreno {
-    COMERSIAL,VIVIENDA,EMPRESARIAL;
+    COMERCIAL,VIVIENDA,EMPRESARIAL;
 }

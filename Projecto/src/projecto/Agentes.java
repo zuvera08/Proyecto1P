@@ -154,6 +154,7 @@ public class Agentes extends Usuario {
                         if (p.getCodigo().equals(codigo)) {
                             Venta venta = new Venta(p, diaVenta, this, c);
                             bd.getVentas().add(venta);
+                            p.setVendidad(true);
                         }
                     }
 

@@ -119,6 +119,8 @@ public class Usuario {
             String nombre= sc.nextLine();
             System.out.println("Ingrese la cedula");
             String cedula= sc.nextLine();
+            System.out.println("Ingrese su correo");
+            String correo=  sc.nextLine();
             System.out.println("Ingrese la fecha de Nacimiento (año-mes-dia(EN NUMEROS))");
             String fechaNacimiento= sc.nextLine();
             LocalDate actual = LocalDate.now();
@@ -130,7 +132,7 @@ public class Usuario {
                 System.out.println("Ingrese la contrasenia :");
                 String contrasenia2= sc.nextLine();
                 String codigo = UUID.randomUUID().toString().toUpperCase();
-                registrarse(nombre,LocalDate.parse(fechaNacimiento),cedula ,usuario2,contrasenia2,codigo,bd );
+                registrarse(nombre,LocalDate.parse(fechaNacimiento),cedula ,usuario2,contrasenia2,codigo,correo,bd );
                 break;
                 
             }
@@ -217,22 +219,9 @@ public class Usuario {
      * @author JosueVera
      */
      
-    public void registrarse(String nombre,LocalDate fechaNacimiento,String cedula ,String usuario,String contrasenia ,String codigo,BaseDatos bd){
-        Scanner sc= new Scanner(System.in);
-        System.out.println("Cual es su preferencia de ciudad");
-        String ciudad= sc.nextLine().toUpperCase();
-        System.out.println("Cual es su preferencia de sector");
-        String sector= sc.nextLine().toUpperCase();
-        System.out.println("Cual es su preferencia de propiedad(TERRENOS O CASAS)");
-        String propiedad= sc.nextLine().toUpperCase();
-        System.out.println("Cual es su preferencia de precio minimo");
-        double preMin= sc.nextDouble();
-        System.out.println("Cual es su preferencia de precio Maximo");
-        double preMax= sc.nextDouble();
-        sc.nextLine();       
-        System.out.println("Ingrese su correo");
-        String correo=  sc.nextLine();
-        Alerta a= new Alerta(propiedad,preMin,preMax,ciudad,sector);
+    public void registrarse(String nombre,LocalDate fechaNacimiento,String cedula ,String usuario,String contrasenia ,String codigo,String correo,BaseDatos bd){
+        Scanner sc= new Scanner(System.in);     
+        Alerta a= null;
         Usuario cliente= new Clientes(fechaNacimiento,a,usuario ,nombre,cedula,correo ,contrasenia);
         bd.getUsuarios().add(cliente);
         System.out.println("Registro Exitoso");

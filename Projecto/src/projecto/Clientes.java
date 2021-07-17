@@ -74,6 +74,7 @@ public class Clientes extends Usuario {
                     ArrayList<Propiedades> propiedadesDisponibles=consultarPropiedadesDisponibles(precioMin,precioMax, tipoPropiedad, ciudad, sector,bd) ;
                     System.out.println("   Código         Descripción         Precio      Tamaño         Ubicación          Consultada   ");
                     for (Propiedades p: propiedadesDisponibles){
+                        System.out.println(p.toString());
                         for(Consultas c:bd.getConsulta()){
                             System.out.println(p.toString()+"   "+p.getUbicacion().toString()+"   "+c.propiedadConsultada(p));
                         }    
@@ -117,9 +118,9 @@ public class Clientes extends Usuario {
                         Propiedades propiedad1=null;
                         for(Propiedades p:bd.getPropiedades()){
                             if(detalle1.equals(p.getCodigo())){
-                                propiedad=p; //se refiere a una propiedad en específico, que tiene un solo agente.
+                                propiedad1=p; //se refiere a una propiedad en específico, que tiene un solo agente.
                                 for(Consultas c:bd.getConsulta()){
-                                    if(c.getCliente().getCedula().equals(getCedula())){ //Obtiene las consultas que ha hecho un cliente sobre una propiedad
+                                    if(c.getCliente().getCedula().equals(getCedula())&&(c.getPropiedad().equals(p))){ //Obtiene las consultas que ha hecho un cliente sobre una propiedad
                                         if(c.getRespuesta()!= null){
                                             System.out.println(c.getFechaInicio()+": Cliente:"+c.getPregunta());
                                             System.out.println(c.getFechaFin()+": Agente:"+c.getRespuesta());
@@ -196,11 +197,12 @@ public class Clientes extends Usuario {
      **/
     public ArrayList<Propiedades> consultarPropiedadesDisponibles(double precioMin, double precioMax, String tipoPropiedad, String ciudad, String sector,BaseDatos bd ){
         ArrayList<Propiedades> propiedadesDisponibles=new  ArrayList<>();
-        for (Venta e: bd.getVentas()){
+        for (Propiedades p: bd.getPropiedades()){
+            if(p.getVendida()==false){
             switch (tipoPropiedad){
                 case "casa":
-                    if (e.getPropiedad() instanceof Casas){
-                        Casas casa=(Casas)e.getPropiedad();
+                    if (p instanceof Casas){
+                        Casas casa=(Casas)p;
                         if(casa.getUbicacion().getCiudad().toLowerCase().equals(ciudad.toLowerCase())){
                             if(casa.getUbicacion().getSector().toLowerCase().equals(sector.toLowerCase())){
                                 if(casa.getPrecio()>=precioMin && casa.getPrecio()<=precioMax){
@@ -221,13 +223,11 @@ public class Clientes extends Usuario {
                                     propiedadesDisponibles.add(casa);
                                 }
                             }
-                        }
-                    }
-                    
+                        }}
                     break;
                 case "terreno":
-                    if (e.getPropiedad() instanceof Terreno){
-                        Terreno propiedad=(Terreno)e.getPropiedad();
+                    if (p instanceof Terreno){
+                        Terreno propiedad=(Terreno)p;
                         if(propiedad.getUbicacion().getCiudad().toLowerCase().equals(ciudad.toLowerCase())){
                             if(propiedad.getUbicacion().getSector().toLowerCase().equals(sector.toLowerCase())){
                                 if(propiedad.getPrecio()>=precioMin && propiedad.getPrecio()<=precioMax){
@@ -252,7 +252,6 @@ public class Clientes extends Usuario {
                     }
                     break;
                 default:
-                    Propiedades p=e.getPropiedad();
                     if(p.getUbicacion().getCiudad().toLowerCase().equals(ciudad.toLowerCase())){
                             if(p.getUbicacion().getSector().toLowerCase().equals(sector.toLowerCase())){
                                 if(p.getPrecio()>=precioMin && p.getPrecio()<=precioMax){
@@ -274,11 +273,9 @@ public class Clientes extends Usuario {
                                 }
                             }
                         }
-                    }
-                    
+                    }}}
+                   return propiedadesDisponibles;  
                 }
-        return propiedadesDisponibles;
-        }
     /**
      * Este método permite registrar una consulta
      */
@@ -300,7 +297,7 @@ public class Clientes extends Usuario {
         
         System.out.println("   Fecha Inicio   Código propiedad         Nombre Agente                      Pregunta                       Estado");
         for(Consultas a: bd.getConsulta()){
-            if (a.getCliente().getNombre().equals(getNombre())&& a.getCliente().getCedula().equals(getCedula())&& a.getCliente().getUsuario().equals(getUsuario())){
+            if (a.getCliente().getNombre().equals(this.getNombre())&& a.getCliente().getCedula().equals(this.getCedula())&& a.getCliente().getUsuario().equals(this.getUsuario())){
                 System.out.println(a.mostrarPreguntas());
             }
         }   
@@ -315,13 +312,15 @@ public class Clientes extends Usuario {
         double precioMin=sc.nextDouble();
         System.out.println("Ingrese precio Maximo: ");
         double precioMax=sc.nextDouble();
+        sc.nextLine();
         System.out.println("Ingrese tipo de propiedad que desea (terreno o casa): ");
-        String tipoPropiedad=sc.nextLine().toLowerCase();
+        String tipoPropiedad=sc.nextLine().toUpperCase();
         System.out.println("Ingrese la ciudad de su preferencia: ");
         String ciudad=sc.nextLine().toLowerCase();
         System.out.println("Ingrese sector de su preferencia:" );
         String sector=sc.nextLine().toLowerCase();
         preferencias= new Alerta(tipoPropiedad, precioMin, precioMax, ciudad, sector);
+        
     }
     /**
      * Este método envía un correo si se cumple con todas las exigencias y preferencias del cliente
@@ -332,29 +331,31 @@ public class Clientes extends Usuario {
         String mensaje;
         asunto="Se ha encontrado una propiedad que se ajusta a sus preferencias";
         switch (preferencias.getTipoPropiedad()){
-            case "casa":
+            case "CASAS":
                 if (p instanceof Casas){
                     Casas casa=(Casas)p;
-                    if ((preferencias.getPrecioMin()>=casa.getPrecio()&& preferencias.getPrecioMax()<=casa.getPrecio())&&
-                        preferencias.getCiudad().equals(casa.getUbicacion().getCiudad())&& preferencias.getSector().equals(casa.getUbicacion().getSector())){ 
+                    if (((casa.getPrecio()>=preferencias.getPrecioMin())&& (casa.getPrecio()<=preferencias.getPrecioMax()))&&
+                        (preferencias.getCiudad().equals(casa.getUbicacion().getCiudad()))&& (preferencias.getSector().equals(casa.getUbicacion().getSector()))){ 
+                        System.out.println("ennviando...");
                         mensaje=casa.toString();
                         correo(asunto,mensaje);
                     }
                 }
                 break;
-            case "terreno":
+            case "TERRENOS":
                 if (p instanceof Terreno){
                     Terreno terreno=(Terreno)p;
-                    if ((preferencias.getPrecioMin()>=terreno.getPrecio()&& preferencias.getPrecioMax()<=terreno.getPrecio())&&
-                        preferencias.getCiudad().equals(terreno.getUbicacion().getCiudad())&& preferencias.getSector().equals(terreno.getUbicacion().getSector())){
+                    if (((terreno.getPrecio()>=preferencias.getPrecioMin())&& (terreno.getPrecio()<=preferencias.getPrecioMax()))&&
+                        (preferencias.getCiudad().equals(terreno.getUbicacion().getCiudad()))&& (preferencias.getSector().equals(terreno.getUbicacion().getSector()))){
+                        System.out.println("ennviando...");
                         mensaje=terreno.toString();
                         correo(asunto,mensaje);
                     }   
                 }
                 break;
             default:
-                
-            
+              System.out.println("error");
+              break;
         }
        
     }
@@ -387,6 +388,7 @@ public class Clientes extends Usuario {
             t.connect("proyecto.poo1t@gmail.com", "proyectopoo1");
             t.sendMessage(mens, mens.getAllRecipients());
             t.close();
+            System.out.println("Correo enviado");
             return true;
         } catch(MessagingException e){
             System.out.println("Error"+e);
