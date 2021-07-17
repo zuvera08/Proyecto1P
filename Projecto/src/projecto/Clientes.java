@@ -10,6 +10,7 @@ import Propiedades.Propiedades;
 import Propiedades.Terreno;
 import Utilitaria.PrestamoAleman;
 import Utilitaria.PrestamoFrances;
+import java.awt.SystemColor;
 import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -60,8 +61,8 @@ public class Clientes extends Usuario {
             switch (opcion) {
                 case "1":
                     
-                    System.out.println("Ingrese el tipo de propiedad:");
-                    String tipoPropiedad= sc.nextLine().toLowerCase();
+                    System.out.println("Ingrese el tipo de propiedad(CASAS/TERRENOS):");
+                    String tipoPropiedad= sc.nextLine().toUpperCase();
                     System.out.println("Ingrese el precio minimo:");
                     double precioMin= sc.nextDouble();
                     System.out.println("Ingrese el precio maximo:");
@@ -98,7 +99,8 @@ public class Clientes extends Usuario {
                                 if(u instanceof Clientes){
                                     Clientes c=(Clientes)u;
                                     if(c.getCedula().equals(getCedula())){
-                                        registrarConsulta(pregunta,propiedad,c);
+                                        System.out.println("Registrando en: "+getNombre());
+                                        registrarConsulta(pregunta,propiedad,c,bd);
                                     }
                                 }
                             }
@@ -142,7 +144,7 @@ public class Clientes extends Usuario {
                                 if(u instanceof Clientes){
                                     Clientes c=(Clientes)u;
                                     if(c.getCedula().equals(getCedula())){
-                                        registrarConsulta(pregunta1,propiedad1,c);
+                                        registrarConsulta(pregunta1,propiedad1,c,bd);
                                     }
                                 }
                             }
@@ -201,7 +203,7 @@ public class Clientes extends Usuario {
         for (Propiedades p: bd.getPropiedades()){
             if(p.getVendida()==false){
             switch (tipoPropiedad){
-                case "casa":
+                case "CASAS":
                     if (p instanceof Casas){
                         Casas casa=(Casas)p;
                         if(casa.getUbicacion().getCiudad().toLowerCase().equals(ciudad.toLowerCase())){
@@ -226,7 +228,7 @@ public class Clientes extends Usuario {
                             }
                         }}
                     break;
-                case "terreno":
+                case "TERRENOS":
                     if (p instanceof Terreno){
                         Terreno propiedad=(Terreno)p;
                         if(propiedad.getUbicacion().getCiudad().toLowerCase().equals(ciudad.toLowerCase())){
@@ -280,13 +282,14 @@ public class Clientes extends Usuario {
     /**
      * Este método permite registrar una consulta
      */
-    public void registrarConsulta(String pregunta,Propiedades propiedad, Clientes cliente) {
+    public void registrarConsulta(String pregunta,Propiedades propiedad, Clientes cliente, BaseDatos bd) {
         Consultas consulta=new Consultas(propiedad);
         consulta.setPregunta(pregunta);
         consulta.setCliente(cliente);
         Integer i=parseInt(consulta.getCodigoConsulta());
         i++;
         consulta.setCodigoConsulta(i.toString());
+        bd.getConsulta().add(consulta);
         
     }
     
