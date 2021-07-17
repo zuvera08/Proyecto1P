@@ -165,7 +165,8 @@ public class Clientes extends Usuario {
                         if (p.getCodigo().equals(codigo)){
                             System.out.println("Ingrese la cuota deseada");
                             int cuota= sc.nextInt();
-                            System.out.println("Ingrese la amortizacion deseada");
+                            sc.nextLine();
+                            System.out.println("Ingrese la amortizacion deseada(fancres/aleman");
                             String amortizacion= sc.nextLine();
                             simularPrestamo(p,cuota,amortizacion);
                             
