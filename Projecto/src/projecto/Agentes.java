@@ -95,7 +95,7 @@ public class Agentes extends Usuario {
     public void revizarBuzon(BaseDatos bd) {
         ArrayList<Consultas> listaconsultas = new ArrayList<>();
         for (Consultas consul : bd.getConsulta()) {
-            if (this.agente.getNombre().equals(consul.getPropiedad().getAgente().getNombre())&&consul.isEstadoRespuesta()==false) {
+            if (getNombre().equals(consul.getPropiedad().getAgente().getNombre())&&consul.isEstadoRespuesta()==false) {
                 listaconsultas.add(consul);
                 for (Consultas c : listaconsultas) {
                     if(c.isEstadoRespuesta()==false){
@@ -152,7 +152,7 @@ public class Agentes extends Usuario {
                 if (c.getNombre().equals(nombre)) {
                     for (Propiedades p : bd.getPropiedades()) {
                         if (p.getCodigo().equals(codigo)) {
-                            Venta venta = new Venta(p, diaVenta, this.agente, c);
+                            Venta venta = new Venta(p, diaVenta, this, c);
                             bd.getVentas().add(venta);
                         }
                     }

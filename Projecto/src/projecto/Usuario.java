@@ -24,9 +24,7 @@ public class Usuario {
     private String cedula;
     private String correo;
     private String contrasenia;
-    public Administradores administrador;
-    public Clientes cliente;
-    public Agentes agente;
+
     public Usuario() {
     }
     
@@ -184,17 +182,17 @@ public class Usuario {
            if(usu.equals(u)){
                 if(usu instanceof Administradores){
                     System.out.println("Bienvenido Admin");
-                    administrador= (Administradores)usu;
+                    Administradores administrador= (Administradores)usu;
                     administrador.opcionesAdministrador(bd);
                 }
                 else if(usu instanceof Clientes){
                     System.out.println("Bienvenido Cliente");
-                    cliente= (Clientes)usu;
+                    Clientes cliente= (Clientes)usu;
                     cliente.opcionesCliente(bd);
                 }
                 else if(usu instanceof Agentes){
                     System.out.println("Bienvenido Agente");
-                    agente= (Agentes)usu;
+                    Agentes agente= (Agentes)usu;
                     agente.opcionesAgente(bd);
                 }
            }
@@ -231,9 +229,11 @@ public class Usuario {
         double preMin= sc.nextDouble();
         System.out.println("Cual es su preferencia de precio Maximo");
         double preMax= sc.nextDouble();
-        sc.nextLine();
+        sc.nextLine();       
+        System.out.println("Ingrese su correo");
+        String correo=  sc.nextLine();
         Alerta a= new Alerta(propiedad,preMin,preMax,ciudad,sector);
-        Usuario cliente= new Clientes(fechaNacimiento,a,usuario ,nombre,cedula,contrasenia ,codigo);
+        Usuario cliente= new Clientes(fechaNacimiento,a,usuario ,nombre,cedula,correo ,contrasenia);
         bd.getUsuarios().add(cliente);
         System.out.println("Registro Exitoso");
         salir(bd);
